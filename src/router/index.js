@@ -15,6 +15,16 @@ const routes = [
     path: '/template',
     name: 'Template',
     component: Template
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/About.vue')
+  },
+  {
+    path: '/landingpage',
+    name: 'LandingPage',
+    component: () => import('../views/LandingPage.vue')
   }
 ]
 
