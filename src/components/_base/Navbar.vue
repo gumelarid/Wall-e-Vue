@@ -4,7 +4,7 @@
       <nav class="walle-navbar">
         <b-container>
           <b-row>
-            <b-col md="5" class="nav-title">
+            <b-col md="6" class="nav-title">
               <router-link to="/dashboard">
                 <span>Wall-e</span>
               </router-link>
@@ -35,3 +35,5 @@
     </header>
   </div>
 </template>
+
+<style src="../../assets/style/walle_style.css" scoped></style>
