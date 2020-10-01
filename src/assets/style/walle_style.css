@@ -73,13 +73,60 @@
 .nav-profile .notification .notif-icon {
     font-size: 18px;
     cursor: pointer;
-    padding: 3px 8px;
+    padding: 3px 2px;
     border-radius: 50px;
-    margin-top: 6px;
+    margin-top: 2px;
 }
 
 .nav-profile .notification .notif-icon:hover {
     background: #fbfbfb;
+}
+
+.notification .dropdown-menu {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 70px rgba(99, 99, 99, 0.15);
+    margin-top: 20px;
+    border: 0;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.notification .dropdown-menu li {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 8px;
+    margin: 15px 0;
+}
+
+.notification .dropdown-menu li .dropdown-item{
+    display: flex;
+}
+
+.notification .dropdown-menu .notif-detail {
+    margin-left: 10px;
+}
+
+.notification .dropdown-menu svg {
+    margin-top: 10px;
+}
+
+.notification .dropdown-menu svg.bi-arrow-down {
+    color: #4CEDB3
+}
+
+.notification .dropdown-menu svg.bi-arrow-up {
+    color: #FF5B37
+}
+
+.notification .notif-subject {
+    color: #7A7A7A;
+    font-size: 14px;
+}
+
+.notification .notif-pricing {
+    color: #43484F;
+    font-weight: bold;
 }
 
 @media (max-width: 425px) {
@@ -96,7 +143,7 @@
 /*============ Footer ===============*/
 .walle-footer {
     background: #6379F4;
-    padding: 20px 0;
+    padding: 15px 0;
     color: #FFFFFF;
     margin-top: 35px;
 }
@@ -109,6 +156,7 @@
 }
 
 @media (max-width: 767px) {
+
     .footer-address,
     .footer-phone,
     .footer-email {
