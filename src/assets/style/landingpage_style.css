@@ -355,6 +355,15 @@ img.main-ill {
     margin: 5px 0px;
   }
 
+  .feedback-card .card {
+    padding: 1rem 1rem;
+  }
+
+  .feedback-card .card-body img {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
   .footer .brand h1 {
     font-size: 24px;
     line-height: 30px;
