@@ -20,11 +20,11 @@
 import Navbar from '../components/_base/Navbar.vue'
 import Sidemenu from '../components/_base/Sidemenu.vue'
 import Footer from '../components/_base/Footer.vue'
-import Content from '../components/_base/MainContent/History.vue'
+import Content from '../components/_base/MainContent/ContTransfer.vue'
 
 export default {
-  title: 'Dashboard | Wall-e',
-  name: 'History',
+  title: 'Transfer | Wall-e',
+  name: 'Transfer',
   components: {
     Navbar,
     Sidemenu,
