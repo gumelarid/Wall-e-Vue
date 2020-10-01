@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Chartkick from 'vue-chartkick'
+import Chart from 'chart.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,6 +16,7 @@ Vue.use(IconsPlugin)
 Vue.mixin(titleMixin)
 Vue.use(VueConfirmDialog)
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
+Vue.use(Chartkick.use(Chart))
 
 Vue.config.productionTip = false
 

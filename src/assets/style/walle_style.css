@@ -171,6 +171,7 @@
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
     border-radius: 25px;
     padding: 30px 0;
+    margin-bottom: 20px;
 }
 
 .sidemenu-collections a:hover {
@@ -206,5 +207,11 @@
 }
 
 .sidemenu-collections .item-logout {
-    margin-top: 200px;
+    margin-top: 270px;
+}
+
+@media (max-width: 767px) {
+    .sidemenu-collections .item-logout {
+        margin-top: 20px;
+    }
 }

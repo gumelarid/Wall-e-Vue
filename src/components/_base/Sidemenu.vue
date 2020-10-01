@@ -1,28 +1,10 @@
 <template>
   <div class="walle-sidemenu">
     <div class="sidemenu-collections">
-      <router-link to="/dashboard">
-        <div class="sidemenu-item active">
-          <b-icon icon="grid" class="sidemenu-icon"></b-icon>
-          <span class="sidemenu-title">Dashboard</span>
-        </div>
-      </router-link>
-      <router-link to="/transfer">
-        <div class="sidemenu-item">
-          <b-icon icon="arrow-up" class="sidemenu-icon"></b-icon>
-          <span class="sidemenu-title">Transfer</span>
-        </div>
-      </router-link>
-      <router-link to="/top-up">
-        <div class="sidemenu-item">
-          <b-icon icon="plus" class="sidemenu-icon"></b-icon>
-          <span class="sidemenu-title">Top Up</span>
-        </div>
-      </router-link>
-      <router-link to="/profile">
-        <div class="sidemenu-item">
-          <b-icon icon="person" class="sidemenu-icon"></b-icon>
-          <span class="sidemenu-title">Profile</span>
+      <router-link v-for="(v, i) in navData" :key="i" :to="v.to">
+        <div :class="[currentPage === v.to ? 'active' : '','sidemenu-item']">
+          <b-icon :icon="v.icon" class="sidemenu-icon"></b-icon>
+          <span class="sidemenu-title">{{v.name}}</span>
         </div>
       </router-link>
       <router-link to="#">
@@ -34,5 +16,20 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      navData: [
+        { to: '/dashboard', name: 'Dashboard', icon: 'grid' },
+        { to: '/transfer', name: 'Transfer', icon: 'arrow-up' },
+        { to: '/top-up', name: 'Top Up', icon: 'plus' },
+        { to: '/profile', name: 'Profile', icon: 'person' }
+      ],
+      currentPage: this.$route.path
+    }
+  }
+}
 
+</script>
 <style src="../../assets/style/walle_style.css" scoped></style>

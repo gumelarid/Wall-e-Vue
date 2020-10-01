@@ -1,0 +1,133 @@
+/*Wall-e Layout Ref*/
+
+/*#COLOR*/
+/*PRIMARY: #6379F4*/
+/*DARK: #3A3D42*/
+/*WHITE: #FFFFFF*/
+/*ERROR: #FF5B37*/
+/*SECONDARY: Primary*/
+
+/*#FONT: Nunito Sans*/
+/*========================*/
+.text-semi {
+	font-size: 13px;
+	color: #6A6A6A
+}
+
+.card-balance {
+    background: #6379F4;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.card-balance .title {
+    color: #E0E0E0;
+}
+
+.card-balance .card-amount {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.card-balance .card-phone {
+    color: #DFDCDC;
+    font-size: 14px;
+}
+
+.card-balance .action-section a {
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    font-weight: 400;
+    margin: 10px 0;
+    display: block;
+    text-align: center;
+}
+
+.card-balance .action-section a:hover {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.card-balance .action-section span {
+    margin-left: 10px;
+}
+
+.transaction-info {
+    /*margin-top: 20px;*/
+}
+
+.walle-card {
+    background: #FFFFFF;
+    margin-top: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+    padding: 24px;
+    font-size: 13px;
+    min-height: 410px;
+}
+
+.walle-card-header {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.walle-card-header .title {
+	font-weight: bold;
+}
+
+.walle-card-header a {
+	font-size: 13px;
+}
+
+.history-collections .history-item {
+	margin: 20px 0;
+}
+
+.history-item .history-image {
+	padding-left: 0
+}
+
+.history-item .history-image img {
+	width: 40px;
+	border-radius: 10px;
+}
+
+.history-item .history-name {
+	font-weight: bold
+}
+
+.history-item .history-status {
+	color: #7A7886;
+}
+
+.history-item .history-amount {
+	text-align-last: right;
+	padding-right: 0;
+	color: #1EC15F;
+}
+
+/*==============Chart============*/
+.chart-info .header {
+	margin-bottom: 20px;
+}
+
+.chart-info .chart-amount {
+	font-weight: bold;
+}
+
+.chart-info svg {
+	margin-top: 10px;
+	font-weight: 600;
+	font-size: 19px;
+}
+
+.chart-info .income svg {
+	color: #1EC15F
+}
+
+.chart-info .expense svg {
+	color: #FF5B37
+}

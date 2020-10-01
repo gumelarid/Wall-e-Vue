@@ -19,7 +19,8 @@
 
 body {
     margin: 0;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif !important;
     background: #fbfbfb !important;
 }
 </style>
+<style src="./assets/style/scrollbar.css"></style>
