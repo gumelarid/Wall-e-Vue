@@ -8,6 +8,7 @@ import Pin from '../views/auth/Pin.vue'
 import Forgot from '../views/auth/Forgot.vue'
 import SetPassword from '../views/auth/SetPassword.vue'
 import Activated from '../views/auth/Activated.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -20,46 +21,52 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
     meta: { requiresVisitor: true }
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
     meta: { requiresVisitor: true }
   },
   {
     path: '/pin',
     name: 'Pin',
-    component: Pin
+    component: Pin,
     meta: { requiresVisitor: true }
   },
   {
     path: '/forgot',
     name: 'Forgot',
-    component: Forgot
+    component: Forgot,
     meta: { requiresVisitor: true }
   },
   {
     path: '/setpassword',
     name: 'SetPassword',
-    component: SetPassword
+    component: SetPassword,
     meta: { requiresVisitor: true }
   },
   {
     path: '/activate',
     name: 'Activated',
-    component: Activated
+    component: Activated,
     meta: { requiresVisitor: true }
   },
   {
     path: '/template',
     name: 'Template',
-    component: Template
+    component: Template,
     meta: { requiresAuth: true }
   }
 ]
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
@@ -83,12 +90,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next() // make sure to always call next()!
   }
-})
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
 })
 
 export default router
