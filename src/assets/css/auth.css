@@ -1,0 +1,158 @@
+@font-face {
+  font-family: 'NunitoSans-Regular';
+  src: url(../font/NunitoSans-Regular.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: NunitoSans-Regular, Helvetica, Arial, sans-serif;
+}
+
+.left-side {
+  background-image: url('../image/MaskGroup.png');
+  /* position: relative;
+  background: #6379f4; */
+}
+.left-title {
+  font-weight: bold;
+  margin-top: 30px;
+  margin-left: 100px;
+  float: left;
+  font-size: 1.2rem;
+  line-height: 39.56px;
+  color: #ffffff;
+}
+.img-phone {
+  background-image: url('../image/png-phone2.png');
+  background-size: 350px;
+  width: 350px;
+  height: 540px;
+  margin-top: 30px;
+  margin-left: 60px;
+}
+.img-phone2 {
+  background-image: url('../image/png-phone.png');
+  background-size: 350px;
+  width: 350px;
+  height: 540px;
+  margin-top: -540px;
+  margin-left: 250px;
+}
+
+.left-text {
+  margin-top: 50px;
+  width: 480px;
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
+
+.left-text p {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 37.56px;
+}
+
+.left-text span {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.right-title {
+  width: 400px;
+  font-weight: bold;
+  margin-top: 100px;
+  margin-left: 30px;
+  font-size: 1.2rem;
+  line-height: 32.56px;
+}
+
+.form {
+  width: 100%;
+  font-weight: bold;
+  margin-left: 30px;
+  font-size: 1.2rem;
+  line-height: 32.56px;
+}
+
+.email {
+  position: relative;
+  border-bottom: 1.5px solid#3a3d426b;
+  width: 75%;
+  display: flex;
+  flex: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.email img {
+  position: absolute;
+  top: 5.5px;
+  left: 2px;
+}
+.email input {
+  padding-left: 40px;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+.forgot {
+  font-size: 13px;
+  text-align: right;
+  width: 75%;
+  margin-bottom: 20px;
+}
+
+.password {
+  position: relative;
+  border-bottom: 1.5px solid#3a3d426b;
+  width: 75%;
+  display: flex;
+  flex: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.password img:nth-of-type(1) {
+  position: absolute;
+  top: 5.5px;
+  left: 2px;
+}
+.password input {
+  padding-left: 40px;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.password img:nth-of-type(2) {
+  position: absolute;
+  top: 5.5px;
+  right: 0px;
+  cursor: pointer;
+}
+
+.right-login-btn {
+  width: 350px;
+}
+
+.right {
+  border-right: 1px solid rgb(236, 232, 241);
+}
+
+.right p {
+  width: 350px;
+  font-weight: bold;
+  margin-left: 30px;
+  font-size: 0.9rem;
+  line-height: 32.56px;
+}
+
+.right-register {
+  margin: 10px auto;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .left-side {
+    display: none;
+  }
+}
