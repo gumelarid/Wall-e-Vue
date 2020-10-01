@@ -1,0 +1,371 @@
+.lp-container {
+  background: #fafcff;
+  overflow-x: hidden;
+}
+
+.main-content-1 {
+  padding: 3rem 6rem;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 28px;
+  color: #6379f4;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.btn-prim {
+  background: #ffffff;
+  border: 2px solid #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-size: 18px;
+  line-height: 25px;
+  color: #6379f4;
+  padding: 0.5rem 1.7rem;
+}
+
+.btn-sec {
+  background: #6379f4;
+  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+  border-radius: 12px;
+  font-size: 18px;
+  line-height: 25px;
+  color: #ffffff;
+  border: transparent;
+  padding: 0.6rem 1.8rem;
+}
+
+img.main-ill {
+  object-fit: cover;
+  max-width: 400px;
+  max-height: 700px;
+}
+
+.headline,
+.download {
+  padding: 1rem 0;
+}
+
+.headline h1,
+.about h1,
+.feedback h1 {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 90px;
+  color: #3a3d42;
+}
+
+.headline h1 .primary,
+.about h1 .primary,
+.feedback h1 .primary {
+  color: #6379f4;
+}
+
+.headline,
+.download,
+.about,
+.feedback p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 31px;
+  color: #3a3d42;
+}
+
+.main-content-2 {
+  padding: 3rem 6rem;
+  background: rgba(71, 58, 209, 0.06);
+}
+
+.main-content-2 img {
+  max-width: 120px;
+}
+
+.main-content-3 {
+  padding: 3rem 6rem;
+}
+
+.about {
+  padding: 1rem 0;
+}
+
+.about-card {
+  padding: 1rem 0;
+}
+
+.about-card .card,
+.feedback-card .card {
+  border: transparent;
+  box-shadow: 0px 4px 250px rgba(172, 172, 172, 0.15);
+  border-radius: 25px;
+}
+
+.about-card .card-body h1,
+.feedback-card .card-body h1 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 31px;
+  color: #3a3d42;
+}
+
+.about-card .card-body p,
+.feedback-card .card-body p {
+  font-size: 18px;
+  line-height: 31px;
+  text-align: center;
+  color: #3a3d42;
+}
+
+.main-content-4 {
+  padding: 3rem 6rem;
+  background: rgba(71, 58, 209, 0.06);
+}
+
+.features .card {
+  margin: 10px 0px;
+  border: transparent;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+}
+
+.features .card-body h1 {
+  font-weight: bold;
+  font-size: 20px;
+  color: #3a3d42;
+}
+
+.features .card-body h1 .primary {
+  color: #6379f4;
+}
+
+.features .card-body p {
+  color: #3a3d42;
+  font-size: 14px;
+}
+
+.main-content-5 {
+  padding: 3rem 6rem;
+}
+
+.feedback-card .card {
+  border: transparent;
+  box-shadow: 0px 4px 250px rgba(172, 172, 172, 0.15);
+  border-radius: 30px;
+  padding: 3rem 2.5rem;
+}
+
+.feedback-card .card-body img {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 15px;
+}
+
+.main-content-6 {
+  padding: 3rem 6rem;
+  background-color: #6379f4;
+}
+
+.brand .col-md-5 {
+  padding: 0;
+}
+
+.footer .brand h1 {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 49px;
+  color: #ffffff;
+}
+
+.footer p {
+  font-size: 18px;
+  line-height: 31px;
+  color: rgba(239, 239, 239, 0.75);
+}
+
+.footer hr {
+  border: 1px solid white;
+}
+
+@media screen and (max-width: 768px) {
+  .brand {
+    font-size: 24px;
+  }
+
+  .btn-prim {
+    font-size: 14px;
+    padding: 0.2rem 1rem;
+  }
+
+  .btn-sec {
+    font-size: 14px;
+    padding: 0.3rem 0.6rem;
+  }
+
+  img.main-ill {
+    max-width: 300px;
+    max-height: 600px;
+  }
+
+  .headline h1,
+  .about h1,
+  .feedback h1 {
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 60px;
+  }
+
+  .main-content-2 img {
+    max-width: 70px;
+  }
+
+  .headline,
+  .download,
+  .about,
+  .feedback p {
+    font-size: 14px;
+    line-height: 28px;
+  }
+
+  .about-card .card-body h1,
+  .feedback-card .card-body h1 {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .about-card .card-body p,
+  .feedback-card .card-body p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .features .card-body h1 {
+    font-size: 16px;
+  }
+
+  .features .card-body p {
+    font-size: 12px;
+  }
+
+  .features .card {
+    margin: 5px 0px;
+  }
+
+  .footer .brand h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .footer p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .main-content-1 {
+    padding: 1rem 3rem;
+  }
+
+  .main-content-2 {
+    padding: 1rem 3rem;
+  }
+
+  .main-content-3 {
+    padding: 1rem 3rem;
+  }
+
+  .main-content-4 {
+    padding: 1rem 3rem;
+  }
+
+  .main-content-5 {
+    padding: 1rem 3rem;
+  }
+
+  .main-content-6 {
+    padding: 1rem 3rem;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .btn-prim {
+    font-size: 10px;
+    margin: 2px;
+  }
+
+  .btn-sec {
+    font-size: 12px;
+    margin: 2px;
+  }
+
+  img.main-ill {
+    display: none;
+  }
+
+  .headline h1,
+  .about h1,
+  .feedback h1 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  .main-content-2 img {
+    max-width: 80px;
+  }
+
+  .headline,
+  .download,
+  .about,
+  .feedback p {
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  .about-card .card-body h1,
+  .feedback-card .card-body h1 {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .about-card .card-body p,
+  .feedback-card .card-body p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .about-card .card {
+    margin: 5px;
+  }
+
+  .features .card-body h1 {
+    font-size: 16px;
+  }
+
+  .features .card-body p {
+    font-size: 12px;
+  }
+
+  .features .card {
+    margin: 5px 0px;
+  }
+
+  .footer .brand h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .footer p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .footer .text-right {
+    text-align: left !important;
+  }
+}
