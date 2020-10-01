@@ -6,10 +6,10 @@
           <h1 class="brand">Wall-E</h1>
         </b-col>
         <b-col md="2" sm="2" class="text-right">
-          <b-button class="btn-prim" block>Login</b-button>
+          <b-button class="btn-prim">Login</b-button>
         </b-col>
         <b-col md="2" sm="2" class="text-right">
-          <b-button class="btn-sec" block>Register</b-button>
+          <b-button class="btn-sec">Register</b-button>
         </b-col>
       </b-row>
       <b-row align-v="center" class="text-left">
@@ -64,7 +64,7 @@
         </b-col>
       </b-row>
     </div>
-    <div class="main-content-3">
+    <div class="main-content-3 text-center">
       <div class="about">
         <b-row class="about" align-v="center" align-h="center">
           <b-col md="8" sm="8">
@@ -159,7 +159,7 @@
         </b-col>
       </b-row>
     </div>
-    <div class="main-content-5">
+    <div class="main-content-5 text-center">
       <div class="feedback">
         <b-row align-v="center" align-h="center">
           <b-col md="8" sm="8">
@@ -191,177 +191,50 @@
         </b-row>
       </div>
     </div>
+    <div class="main-content-6">
+      <b-row class="footer">
+        <b-col>
+          <b-row class="brand">
+            <b-col md="5" sm="5">
+              <h1>Wall-e</h1>
+            </b-col>
+          </b-row>
+          <b-row class="description">
+            <b-col md="5" sm="5">
+              <p>
+                Simplify financial needs and saving much time in banking needs
+                with one single app.
+              </p>
+            </b-col>
+          </b-row>
+          <b-row class="line">
+            <b-col md="12">
+              <hr />
+            </b-col>
+          </b-row>
+          <b-row class="contact">
+            <b-col md="4">
+              <p>© 2020 Wall-E. All right reserved</p>
+            </b-col>
+            <b-col md="2" offset-md="3" class="text-right">
+              <p>08772248740</p>
+            </b-col>
+            <b-col md="3" class="text-right">
+              <p>wallecorps@gmail.com</p>
+            </b-col>
+          </b-row>
+        </b-col>
+      </b-row>
+    </div>
   </div>
 </template>
 
-<style scoped>
-.lp-container {
-  background: #fafcff;
-  overflow-x: hidden;
-}
-
-.main-content-1 {
-  padding: 3rem 6rem;
-}
-
-.brand {
-  font-weight: bold;
-  font-size: 28px;
-  color: #6379f4;
-  margin: 0;
-  padding: 0.5rem 0;
-}
-
-.btn-prim {
-  background: #ffffff;
-  border: 2px solid #6379f4;
-  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-  border-radius: 12px;
-  font-size: 18px;
-  line-height: 25px;
-  color: #6379f4;
-  padding: 0.5rem 1.7rem;
-}
-
-.btn-sec {
-  background: #6379f4;
-  box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-  border-radius: 12px;
-  font-size: 18px;
-  line-height: 25px;
-  color: #ffffff;
-  border: transparent;
-  padding: 0.6rem 1.8rem;
-}
-
-img.main-ill {
-  object-fit: cover;
-  max-width: 400px;
-  max-height: 700px;
-}
-
-.headline,
-.download {
-  padding: 1rem 0;
-}
-
-.headline h1,
-.about h1,
-.feedback h1 {
-  font-style: normal;
-  font-weight: 800;
-  font-size: 50px;
-  line-height: 90px;
-  color: #3a3d42;
-}
-
-.headline h1 .primary,
-.about h1 .primary {
-  color: #6379f4;
-}
-
-.headline,
-.download,
-.about,
-.feedback p {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 31px;
-  color: #3a3d42;
-}
-
-.main-content-2 {
-  padding: 3rem 6rem;
-  background: rgba(71, 58, 209, 0.06);
-}
-
-.main-content-2 img {
-  max-width: 120px;
-}
-
-.main-content-3 {
-  padding: 3rem 6rem;
-}
-
-.about {
-  padding: 1rem 0;
-}
-
-.about-card {
-  padding: 1rem 0;
-}
-
-.about-card .card,
-.feedback-card .card {
-  border: transparent;
-  box-shadow: 0px 4px 250px rgba(172, 172, 172, 0.15);
-  border-radius: 25px;
-}
-
-.about-card .card-body h1,
-.feedback-card .card-body h1 {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 31px;
-  color: #3a3d42;
-}
-
-.about-card .card-body p,
-.feedback-card .card-body p {
-  font-size: 18px;
-  line-height: 31px;
-  text-align: center;
-  color: #3a3d42;
-}
-
-.main-content-4 {
-  padding: 3rem 6rem;
-  background: rgba(71, 58, 209, 0.06);
-}
-
-.features .card {
-  margin: 10px 0px;
-  border: transparent;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  border-radius: 25px;
-}
-
-.features .card-body h1 {
-  font-weight: bold;
-  font-size: 20px;
-  color: #3a3d42;
-}
-
-.features .card-body h1 .primary {
-  color: #6379f4;
-}
-
-.features .card-body p {
-  color: #3a3d42;
-  font-size: 14px;
-}
-
-.main-content-5 {
-  padding: 3rem 6rem;
-}
-
-.feedback-card .card {
-  border: transparent;
-  box-shadow: 0px 4px 250px rgba(172, 172, 172, 0.15);
-  border-radius: 30px;
-  padding: 3rem 2.5rem;
-}
-
-.feedback-card .card-body img {
-  max-width: 120px;
-  max-height: 120px;
-  border-radius: 15px;
-}
+<style src="../assets/style/landingpage_style.css">
 </style>
 
 <script>
 export default {
+  title: 'Landing Page | Wall-e',
   name: 'LandingPage'
 }
 </script>
