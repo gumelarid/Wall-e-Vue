@@ -25,6 +25,11 @@ const routes = [
     path: '/landingpage',
     name: 'LandingPage',
     component: () => import('../views/LandingPage.vue')
+  },
+  {
+    path: '/history',
+    name: 'History',
+    component: () => import('../views/History.vue')
   }
 ]
 

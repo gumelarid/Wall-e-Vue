@@ -1,0 +1,86 @@
+.walle-history {
+  background: #fff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+  padding: 30px 0;
+}
+
+.walle-history .row {
+  padding: 5px 25px 5px 35px;
+  margin: 20px 0;
+  color: #3a3d42;
+}
+
+.heading p {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+  margin: 0;
+}
+
+.title p {
+  font-size: 16px;
+  line-height: 27px;
+  color: #7a7886;
+}
+
+.list-group-item {
+  border: transparent;
+  padding: 0;
+}
+
+.list-group-item .row {
+  padding: 0;
+}
+
+.list-group-item .col-md-1 {
+  padding: 0;
+}
+
+.list-group-item img {
+  max-width: 70px;
+  max-height: 70px;
+  border-radius: 15px;
+}
+
+.list-group-item p {
+  margin: 5px;
+}
+
+.list-group-item p.name {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #4d4b57;
+}
+
+.list-group-item p.note {
+  font-size: 14px;
+  line-height: 19px;
+  color: #7a7886;
+}
+
+.list-group-item p.nominal.In {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1ec15f;
+}
+
+.list-group-item p.nominal.Out {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ff5b37;
+}
+
+@media screen and (max-width: 768px) {
+  .heading p {
+    font-size: 16px;
+  }
+
+  .title p {
+    font-size: 14px;
+  }
+}
