@@ -289,8 +289,17 @@ img.main-ill {
     padding: 1rem 3rem;
   }
 
+  .main-content-1 .row .col-md-8 {
+    width: 100px;
+    margin-right: 100px;
+  }
+
+  .main-content-1 .row .col-md-2 {
+    width: 70px;
+  }
+
   .brand {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .btn-prim {
@@ -376,5 +385,30 @@ img.main-ill {
 
   .footer .text-right {
     text-align: left !important;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .main-content-1 .row .col-md-8 {
+    margin-right: 60px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .brand {
+    font-size: 20px;
+  }
+
+  .btn-prim {
+    font-size: 8px;
+  }
+
+  .btn-sec {
+    font-size: 10px;
+  }
+
+  .main-content-1 .row .col-md-8 {
+    width: 100px;
+    margin-right: 5px;
   }
 }
