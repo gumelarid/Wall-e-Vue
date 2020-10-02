@@ -67,9 +67,19 @@ const routes = [
     meta: { requiresVisitor: true }
   },
   {
-    path: '/history',
+    path: '/dashboard',
     name: 'History',
     component: () => import('../views/History.vue')
+  },
+  {
+    path: '/transfer',
+    name: 'Transfer',
+    component: () => import('../views/Transfer.vue')
+  },
+  {
+    path: '/continue',
+    name: 'ContTransfer',
+    component: () => import('../views/Transfer.vue')
   }
 ]
 
