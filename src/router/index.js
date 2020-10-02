@@ -67,7 +67,7 @@ const routes = [
     meta: { requiresVisitor: true }
   },
   {
-    path: '/dashboard',
+    path: '/history',
     name: 'History',
     component: () => import('../views/History.vue')
   },
