@@ -75,11 +75,6 @@ const routes = [
     path: '/transfer',
     name: 'Transfer',
     component: () => import('../views/Transfer.vue')
-  },
-  {
-    path: '/continue',
-    name: 'ContTransfer',
-    component: () => import('../views/Transfer.vue')
   }
 ]
 
@@ -95,7 +90,7 @@ router.beforeEach((to, from, next) => {
     // if not, redirect to login page.
     if (!store.getters.isLogin) {
       next({
-        path: '/login'
+        path: '/'
       })
     } else {
       next()
