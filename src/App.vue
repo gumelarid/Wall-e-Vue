@@ -4,7 +4,20 @@
     <router-view />
   </div>
 </template>
-<<<<<<< HEAD
+
+<script>
+import { mapActions } from 'vuex'
+export default {
+  name: 'App',
+  methods: {
+    ...mapActions(['interceptorRequest', 'interceptorResponse'])
+  },
+  created() {
+    this.interceptorRequest()
+    this.interceptorResponse()
+  }
+}
+</script>
 
 <style>
 /*PRIMARY: #6379F4*/
@@ -25,18 +38,3 @@ body {
 }
 </style>
 <style src="./assets/style/scrollbar.css"></style>
-=======
-<script>
-import { mapActions } from 'vuex'
-export default {
-  name: 'App',
-  methods: {
-    ...mapActions(['interceptorRequest', 'interceptorResponse'])
-  },
-  created() {
-    this.interceptorRequest()
-    this.interceptorResponse()
-  }
-}
-</script>
->>>>>>> aaa6a9b81996e289e4374aec44ee26730dede384
