@@ -16,7 +16,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { requiresVisitor: true }
   },
   {
     path: '/login',
@@ -34,7 +35,7 @@ const routes = [
     path: '/pin',
     name: 'Pin',
     component: Pin,
-    meta: { requiresVisitor: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/forgot',
@@ -82,7 +83,7 @@ router.beforeEach((to, from, next) => {
   } else if (to.matched.some(record => record.meta.requiresVisitor)) {
     if (store.getters.isLogin) {
       next({
-        path: '/'
+        path: '/template'
       })
     } else {
       next()
