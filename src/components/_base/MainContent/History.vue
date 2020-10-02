@@ -68,6 +68,21 @@
         </div>
       </b-col>
     </b-row>
+    <b-row>
+      <b-col md="12">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          align="center"
+        >
+          <template v-slot:page="{ page, active }">
+            <b v-if="active">{{ page }}</b>
+            <i v-else>{{ page }}</i>
+          </template>
+        </b-pagination>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -90,7 +105,10 @@ export default {
           class: 'Out',
           nominal: '100.000'
         }
-      ]
+      ],
+      rows: 5,
+      perPage: 1,
+      currentPage: 1
     }
   }
 }
