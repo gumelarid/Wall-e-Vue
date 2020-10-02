@@ -31,23 +31,23 @@
           icon="check-circle-fill"
           variant="success"
         ></b-icon>
-        <h2 class="right-title" style="margin-top:10px">
+        <h2 class="right-title" style="margin-top: 10px">
           Your PIN Was Successfully Created
         </h2>
         <p>
           Your PIN was successfully created and you can now access all the
-          features in Wall-E. Login to your new account and start exploring!
+          features in Wall-E !
         </p>
         <div class="form">
-          <router-link to="/login"
+          <router-link to="/template"
             ><b-button class="right-login-btn" variant="primary"
-              >Login Now</b-button
+              >Continue Now</b-button
             ></router-link
           >
         </div>
       </b-col>
       <b-col class="right" cols="12" sm="12" md="12" lg="5" xl="5" v-else>
-        <h2 class="right-title" style="width:300px">
+        <h2 class="right-title" style="width: 300px">
           Secure Your Account, Your Wallet, and Your Data With 6 Digits PIN That
           You Created Yourself.
         </h2>
@@ -57,6 +57,12 @@
           password and the PIN.
         </p>
         <div class="form">
+          <b-alert
+            style="font-size: 13px; width: 350px"
+            variant="warning"
+            :show="isAlert"
+            >{{ isMsg }}</b-alert
+          >
           <b-form @submit.prevent="onSubmit()">
             <div class="input-pin">
               <PincodeInput
@@ -80,6 +86,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import PincodeInput from 'vue-pincode-input'
 export default {
   title: 'Set Pin | Wall-e',
@@ -89,14 +96,34 @@ export default {
   },
   data() {
     return {
+      isAlert: false,
+      isMsg: '',
       code: '',
       onSuccess: false
     }
   },
+  computed: {
+    ...mapGetters({
+      user: 'getUserData'
+    })
+  },
   methods: {
+    ...mapActions(['patchPin']),
     onSubmit() {
-      console.log(this.code)
-      this.onSuccess = true
+      const payload = {
+        user_id: this.user.user_id,
+        user_pin: this.code
+      }
+      this.patchPin(payload)
+        .then((response) => {
+          this.isAlert = false
+          this.onSuccess = true
+        })
+        .catch((err) => {
+          this.isAlert = true
+          this.onSuccess = false
+          this.isMsg = err.data.msg
+        })
     }
   }
 }

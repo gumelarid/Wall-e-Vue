@@ -97,9 +97,13 @@ export default {
             user_email: '',
             user_password: ''
           }
-          setTimeout(() => {
-            this.$router.push('/Template')
-          }, 2000)
+          if (response.data.user_pin.length === 0) {
+            this.$router.push('/pin')
+          } else {
+            setTimeout(() => {
+              this.$router.push('/Template')
+            }, 2000)
+          }
         })
         .catch((err) => {
           this.isAlert = true

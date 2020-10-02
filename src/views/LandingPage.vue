@@ -3,13 +3,17 @@
     <div class="main-content-1">
       <b-row>
         <b-col md="8" sm="8" class="text-left">
-          <h1 class="brand">Wall-E</h1>
+          <h1 class="brand">Wall-e</h1>
         </b-col>
         <b-col md="2" sm="2" class="text-right">
-          <b-button class="btn-prim">Login</b-button>
+          <router-link to="/login">
+            <b-button class="btn-prim">Login</b-button>
+          </router-link>
         </b-col>
         <b-col md="2" sm="2" class="text-right">
-          <b-button class="btn-sec">Register</b-button>
+          <router-link to="/register">
+            <b-button class="btn-sec">Register</b-button>
+          </router-link>
         </b-col>
       </b-row>
       <b-row align-v="center" class="text-left">
@@ -26,7 +30,9 @@
               We bring you a mobile app for banking problems that oftenly
               wasting much of your times.
             </p>
-            <b-button class="btn-sec">Try It Free</b-button>
+            <router-link to="/login">
+              <b-button class="btn-sec">Try It Free</b-button>
+            </router-link>
           </div>
           <div class="download">
             <p>Available on</p>
@@ -214,7 +220,7 @@
           </b-row>
           <b-row class="contact">
             <b-col md="4">
-              <p>© 2020 Wall-E. All right reserved</p>
+              <p>© 2020 Wall-e. All right reserved</p>
             </b-col>
             <b-col md="2" offset-md="3" class="text-right">
               <p>08772248740</p>

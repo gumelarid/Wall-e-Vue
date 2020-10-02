@@ -15,22 +15,20 @@ const routes = [
   {
     path: '/template',
     name: 'Template',
-    component: Template
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
+    component: Template,
+    meta: { requiresVisitor: true }
   },
   {
     path: '/',
     name: 'LandingPage',
-    component: () => import('../views/LandingPage.vue')
+    component: () => import('../views/LandingPage.vue'),
+    meta: { requiresVisitor: true }
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: () => import('../views/Dashboard.vue')
+    component: () => import('../views/Dashboard.vue'),
+    meta: { requiresVisitor: true }
   },
   {
     path: '/login',
@@ -48,7 +46,7 @@ const routes = [
     path: '/pin',
     name: 'Pin',
     component: Pin,
-    meta: { requiresVisitor: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/forgot',
@@ -90,7 +88,7 @@ router.beforeEach((to, from, next) => {
   } else if (to.matched.some(record => record.meta.requiresVisitor)) {
     if (store.getters.isLogin) {
       next({
-        path: '/'
+        path: '/template'
       })
     } else {
       next()
