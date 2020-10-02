@@ -65,6 +65,11 @@ const routes = [
     name: 'Activated',
     component: Activated,
     meta: { requiresVisitor: true }
+  },
+  {
+    path: '/history',
+    name: 'History',
+    component: () => import('../views/History.vue')
   }
 ]
 
