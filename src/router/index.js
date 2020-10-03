@@ -1,23 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Template from '../views/Template_Page.vue'
 import Login from '../views/auth/Login.vue'
 import Register from '../views/auth/Register.vue'
 import Pin from '../views/auth/Pin.vue'
 import Forgot from '../views/auth/Forgot.vue'
 import SetPassword from '../views/auth/SetPassword.vue'
 import Activated from '../views/auth/Activated.vue'
+
+import Profile from '../views/Profile.vue'
+
 import store from '../store'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/template',
-    name: 'Template',
-    component: Template,
-    meta: { requiresVisitor: true }
-  },
   {
     path: '/',
     name: 'LandingPage',
@@ -28,7 +24,7 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/Dashboard.vue'),
-    meta: { requiresVisitor: true }
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
@@ -75,6 +71,12 @@ const routes = [
     path: '/transfer',
     name: 'Transfer',
     component: () => import('../views/Transfer.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    meta: { requiresAuth: true }
   }
 ]
 
@@ -98,7 +100,7 @@ router.beforeEach((to, from, next) => {
   } else if (to.matched.some(record => record.meta.requiresVisitor)) {
     if (store.getters.isLogin) {
       next({
-        path: '/template'
+        path: '/dashboard'
       })
     } else {
       next()
