@@ -11,13 +11,20 @@
     <b-container fluid class="bv-example-row">
       <b-row>
         <b-col md="6" offset-md="3">
-          <b-form>
+          <b-form @submit.prevent="updatePassword()">
+            <b-alert
+              style="font-size: 13px"
+              variant="warning"
+              :show="isAlert"
+              >{{ isMsg }}</b-alert
+            >
             <div class="password">
               <img src="../../../assets/image/lock.png" alt="" />
               <b-form-input
                 :type="type1"
                 required
                 placeholder="Current Password"
+                v-model="form.old_password"
               ></b-form-input>
               <b-icon
                 @click="showPassword1"
@@ -32,6 +39,7 @@
                 :type="type2"
                 required
                 placeholder="New Password"
+                v-model="form.user_password"
               ></b-form-input>
               <b-icon
                 @click="showPassword2"
@@ -46,6 +54,7 @@
                 :type="type3"
                 required
                 placeholder="Repeat New Password"
+                v-model="form.confirm_password"
               ></b-form-input>
               <b-icon
                 @click="showPassword3"
@@ -66,11 +75,14 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'ChangePassword',
   data() {
     return {
+      form: {},
+      isAlert: false,
+      isMsg: '',
       type1: 'password',
       btnText1: 'eye-slash',
       type2: 'password',
@@ -79,7 +91,39 @@ export default {
       btnText3: 'eye-slash'
     }
   },
+  computed: {
+    ...mapGetters({
+      user: 'getUser'
+    })
+  },
   methods: {
+    ...mapActions(['patchPassword', 'getUserById']),
+    updatePassword() {
+      const setData = {
+        user_id: this.user.user_id,
+        form: this.form
+      }
+      this.patchPassword(setData)
+        .then((response) => {
+          this.isAlert = false
+          this.isMsg = ''
+          this.getUserById(this.user.user_id)
+          this.form = {}
+          this.makeToast('success', 'Success', response.msg)
+          this.$bvModal.hide('edit-profile')
+        })
+        .catch((error) => {
+          this.isAlert = true
+          this.isMsg = error.data.msg
+        })
+    },
+    makeToast(variant, title, msg) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
+    },
     showPassword1() {
       if (this.type1 === 'password') {
         this.type1 = 'text'

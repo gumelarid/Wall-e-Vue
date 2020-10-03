@@ -39,7 +39,7 @@
           features in Wall-E !
         </p>
         <div class="form">
-          <router-link to="/template"
+          <router-link to="/dashboard"
             ><b-button class="right-login-btn" variant="primary"
               >Continue Now</b-button
             ></router-link
@@ -104,7 +104,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      user: 'getUserData'
+      user: 'getUser'
     })
   },
   methods: {

@@ -27,7 +27,7 @@
           link to your email and you will be directed to the reset password
           screens.
         </p>
-        <div class="form">
+        <div class="form" style="margin-top: 20px">
           <b-alert
             style="font-size: 13px; width: 350px"
             variant="warning"

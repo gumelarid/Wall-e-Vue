@@ -37,6 +37,9 @@
     <b-modal id="edit-profile" centered title="Edit Profile" hide-footer>
       <b-form @submit.prevent="updateData()">
         <div style="padding-right: 30px; padding-left: 30px">
+          <b-alert style="font-size: 13px" variant="warning" :show="isAlert">{{
+            isMsg
+          }}</b-alert>
           <label>First Name</label>
           <b-input
             style="border: none; border-bottom: 1px solid black"
@@ -81,11 +84,13 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'Personal',
   data() {
     return {
+      isAlert: false,
+      isMsg: '',
       form: {}
     }
   },
@@ -94,8 +99,8 @@ export default {
       user: 'getUserData'
     })
   },
-  created() {},
   methods: {
+    ...mapActions(['patchDataUser', 'getUserById']),
     editUser() {
       this.form = {
         user_first_name: this.user.user_first_name,
@@ -109,16 +114,25 @@ export default {
         user_id: this.user.user_id,
         form: this.form
       }
-      console.log(data)
-      // this.patchUser(data)
-      //   .then(response => {
-      //     this.getUserById(response.data)
-      //     this.makeToast('success', 'Success', response.msg)
-      //     this.$bvModal.hide('edit-profile')
-      //   })
-      //   .catch(error => {
-      //     this.makeToast('danger', 'Error', error.data.msg)
-      //   })
+      this.patchDataUser(data)
+        .then((response) => {
+          this.getUserById(this.user.user_id)
+          this.isAlert = false
+          this.isMsg = ''
+          this.makeToast('success', 'Success', response.msg)
+          this.$bvModal.hide('edit-profile')
+        })
+        .catch((error) => {
+          this.isAlert = true
+          this.isMsg = error.data.msg
+        })
+    },
+    makeToast(variant, title, msg) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     },
     ...mapMutations([
       'setChangePassNav',
