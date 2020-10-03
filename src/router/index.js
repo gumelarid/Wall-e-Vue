@@ -75,6 +75,11 @@ const routes = [
     path: '/transfer',
     name: 'Transfer',
     component: () => import('../views/Transfer.vue')
+  },
+  {
+    path: '/status',
+    name: 'Status',
+    component: () => import('../views/Status.vue')
   }
 ]
 
