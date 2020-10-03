@@ -6,6 +6,7 @@ import Pin from '../views/auth/Pin.vue'
 import Forgot from '../views/auth/Forgot.vue'
 import SetPassword from '../views/auth/SetPassword.vue'
 import Activated from '../views/auth/Activated.vue'
+import Topup from '../views/Topup.vue'
 
 import Profile from '../views/Profile.vue'
 
@@ -76,6 +77,12 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/topup',
+    name: 'Topup',
+    component: Topup,
     meta: { requiresAuth: true }
   }
 ]

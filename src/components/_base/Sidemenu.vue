@@ -24,7 +24,7 @@ export default {
       navData: [
         { to: '/dashboard', name: 'Dashboard', icon: 'grid' },
         { to: '/transfer', name: 'Transfer', icon: 'arrow-up' },
-        { to: '/top-up', name: 'Top Up', icon: 'plus' },
+        { to: '/topup', name: 'Top Up', icon: 'plus' },
         { to: '/profile', name: 'Profile', icon: 'person' }
       ],
       currentPage: this.$route.path

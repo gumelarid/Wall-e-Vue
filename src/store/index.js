@@ -4,6 +4,7 @@ import Auth from './modules/auth'
 import User from './modules/user'
 import Navigation from './modules/navigation'
 import Transfer from './modules/transfer'
+import Payment from './modules/payment'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
@@ -13,7 +14,8 @@ export default new Vuex.Store({
     Auth,
     User,
     Navigation,
-    Transfer
+    Transfer,
+    Payment
   },
   state: {},
   mutations: {},
