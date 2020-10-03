@@ -11,25 +11,25 @@
     <div class="info">
       <p class="label">First Name</p>
       <p class="info-detail">
-        <strong>{{ user[0].user_first_name }}</strong>
+        <strong>{{ user.user_first_name }}</strong>
       </p>
     </div>
     <div class="info">
       <p class="label">Last Name</p>
       <p class="info-detail">
-        <strong>{{ user[0].user_last_name }}</strong>
+        <strong>{{ user.user_last_name }}</strong>
       </p>
     </div>
     <div class="info">
       <p class="label">Verified Email</p>
       <p class="info-detail">
-        <strong>{{ user[0].user_email }}</strong>
+        <strong>{{ user.user_email }}</strong>
       </p>
     </div>
     <div class="info">
       <p class="label">Phone Number</p>
       <p class="info-detail">
-        <strong>{{ user[0].user_phone }}</strong>
+        <strong>{{ user.user_phone }}</strong>
       </p>
       <div class="button-manage" @click="editUser()">Manage</div>
     </div>
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'Personal',
   data() {
@@ -94,22 +94,19 @@ export default {
       user: 'getUserData'
     })
   },
-  created() {
-    this.getUserById(this.user)
-  },
+  created() {},
   methods: {
-    ...mapActions(['getUserById']),
     editUser() {
       this.form = {
-        user_first_name: this.user[0].user_first_name,
-        user_last_name: this.user[0].user_last_name,
-        user_phone: this.user[0].user_phone
+        user_first_name: this.user.user_first_name,
+        user_last_name: this.user.user_last_name,
+        user_phone: this.user.user_phone
       }
       this.$bvModal.show('edit-profile')
     },
     updateData() {
       const data = {
-        user_id: this.user[0].user_id,
+        user_id: this.user.user_id,
         form: this.form
       }
       console.log(data)

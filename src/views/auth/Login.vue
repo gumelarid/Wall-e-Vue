@@ -106,6 +106,7 @@ export default {
           }
         })
         .catch((err) => {
+          console.log(err)
           this.isAlert = true
           this.isMsg = err.data.msg
         })

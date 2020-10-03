@@ -11,15 +11,15 @@
             </b-col>
             <b-col md="6" class="nav-profile">
               <div class="profile-wrapper">
-                <div class="profile-image">
-                  <img src="../../assets/selena-gomez.jpg" alt="">
+                <div class="profile-image" @click="pushToProfile">
+                  <img :src="`${url}/${userData.user_picture}`" alt="">
                 </div>
-                <div class="profile-info">
+                <div class="profile-info" @click="pushToProfile">
                   <div class="profile-name">
-                    <span>Selena Gomez</span>
+                    <span>{{userData.user_first_name}} {{userData.user_last_name}}</span>
                   </div>
                   <div class="profile-phone">
-                    <span>+62 8139 3877 7946</span>
+                    <span>{{userData.user_phone}}</span>
                   </div>
                 </div>
                 <div class="notification">
@@ -59,3 +59,30 @@
   </div>
 </template>
 <style src="../../assets/style/walle_style.css"></style>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+
+export default {
+  data() {
+    return {
+      url: process.env.VUE_APP_URL
+    }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'getUser',
+      userData: 'getUserData'
+    })
+  },
+  created() {
+    this.getUserById(this.user.user_id)
+  },
+  methods: {
+    ...mapActions(['getUserById']),
+    pushToProfile() {
+      this.$router.push('/profile')
+    }
+  }
+}
+</script>

@@ -18,7 +18,7 @@ export default new Vuex.Store({
   actions: {},
   plugins: [
     createPersistedState({
-      paths: ['Auth.user.user_id'],
+      paths: ['Auth.user'],
       storage: window.sessionStorage
     })
   ]

@@ -11,9 +11,6 @@ export default {
       state.user = payload
       state.token = payload.token
     },
-    setUser(state, payload) {
-      state.user = payload
-    },
     delUser(state) {
       state.user = {}
       state.token = null
@@ -107,19 +104,6 @@ export default {
       context.commit('delUser')
       router.push('/login')
     },
-    getUserById(context, payload) {
-      return new Promise((resolve, reject) => {
-        axios
-          .get(`${process.env.VUE_APP_URL}/users/${payload.user_id}`)
-          .then(response => {
-            context.commit('setUser', response.data.data)
-            resolve(response.data)
-          })
-          .catch(error => {
-            reject(error.response)
-          })
-      })
-    },
     interceptorRequest(context) {
       axios.interceptors.request.use(
         function(config) {
@@ -162,7 +146,7 @@ export default {
     isLogin(state) {
       return state.token !== null
     },
-    getUserData(state) {
+    getUser(state) {
       return state.user
     }
   }

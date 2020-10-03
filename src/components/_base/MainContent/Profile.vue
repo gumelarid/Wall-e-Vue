@@ -5,7 +5,7 @@
     <ChangePin v-show="isChangePin" />
     <div v-show="isProfile">
       <div class="profile-img">
-        <img :src="url + '/' + user[0].user_picture" alt="" />
+        <img :src="url + '/' + userData.user_picture" alt="" />
         <input
           type="file"
           ref="file"
@@ -22,9 +22,9 @@
         </div>
         <div class="profile-info">
           <p class="name">
-            {{ user[0].user_first_name }} {{ user[0].user_last_name }}
+            {{ userData.user_first_name }} {{ userData.user_last_name }}
           </p>
-          <span class="phone">{{ user[0].user_phone }}</span>
+          <span class="phone">{{ userData.user_phone }}</span>
         </div>
       </div>
       <div class="navigation">
@@ -101,16 +101,15 @@ export default {
   },
   computed: {
     ...mapGetters({
-      user: 'getUserData',
+      user: 'getUser',
+      userData: 'getUserData',
       isChangePassword: 'getChangePassNav',
       isChangePin: 'getPinNav',
       isProfile: 'getProfileNav',
       isPersonalInfo: 'getPersonalInfoNav'
     })
   },
-  created() {
-    this.getUserById(this.user)
-  },
+  created() {},
   methods: {
     ...mapActions(['getUserById', 'patchProfile', 'logout']),
     editProfile(event) {
@@ -118,12 +117,12 @@ export default {
       const data = new FormData()
       data.append('user_picture', this.formProfile.user_picture)
       const payload = {
-        user_id: this.user[0].user_id,
+        user_id: this.user.user_id,
         formData: data
       }
       this.patchProfile(payload)
         .then((response) => {
-          this.getUserById(response.data)
+          this.getUserById(this.user.user_id)
           this.makeToast('success', 'Success', response.msg)
           this.formProfile = {}
         })
@@ -139,20 +138,22 @@ export default {
       })
     },
     LogoutNow() {
-      this.$bvModal
-        .msgBoxConfirm('Are you sure ?', {
-          cancelVariant: 'danger',
-          okVariant: 'success',
-          headerClass: 'p-2 border-bottom-0',
-          footerClass: 'p-2 border-top-0',
-          centered: true
-        })
-        .then((value) => {
-          this.isLogout = value
-          if (this.isLogout) {
-            this.logout()
+      this.$confirm({
+        title: 'Hello Friend',
+        message: 'Are you sure want to logout?',
+        button: {
+          no: 'Cancel',
+          yes: 'Yes'
+        },
+        callback: confirm => {
+          if (confirm) {
+            this.isLogout = confirm
+            if (this.isLogout) {
+              this.logout()
+            }
           }
-        })
+        }
+      })
     },
 
     ...mapMutations([
