@@ -15,10 +15,10 @@
                     <span>Balance</span>
                   </div>
                   <div class="card-amount">
-                    <span>Rp120.000</span>
+                    <span>Rp {{ userData.user_balance ? formatN(userData.user_balance) : userData.user_balance }}</span>
                   </div>
                   <div class="card-phone">
-                    <span>+62 813-9387-7946</span>
+                    <span>{{userData.user_phone}}</span>
                   </div>
                 </b-col>
                 <b-col md="3" class="action-section">
@@ -46,7 +46,7 @@ import Navbar from '../components/_base/Navbar.vue'
 import Sidemenu from '../components/_base/Sidemenu.vue'
 import Footer from '../components/_base/Footer.vue'
 import DashboardCard from '../components/_base/DashboardCard.vue'
-
+import { mapGetters } from 'vuex'
 export default {
   title: 'Dashboard | Wall-e',
   name: 'Template',
@@ -55,6 +55,14 @@ export default {
     Sidemenu,
     Footer,
     DashboardCard
+  },
+  computed: {
+    ...mapGetters({ userData: 'getUserData' })
+  },
+  methods: {
+    formatN(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    }
   }
 }
 

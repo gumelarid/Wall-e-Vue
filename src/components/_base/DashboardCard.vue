@@ -3,20 +3,28 @@
     <b-col md="7">
       <div class="walle-card chart-info">
         <b-row class="header walle-card-header">
-          <b-col cols="8" class="income">
+          <b-col cols="8" class="income" @click="changeTab('income')">
             <b-icon icon="arrow-down"></b-icon><br>
             <span class="text-semi">Income</span><br>
-            <span class="chart-amount">Rp2.120.000</span>
+            <span class="chart-amount">Rp {{ weekIncome ? formatN(weekIncome) : weekIncome || 0 }}</span>
           </b-col>
-          <b-col cols="4" class="expense">
+          <b-col cols="4" class="expense" @click="changeTab('expense')">
             <b-icon icon="arrow-up"></b-icon><br>
             <span class="text-semi">Expense</span><br>
-            <span class="chart-amount">Rp1.560.000</span>
+            <span class="chart-amount">Rp{{ weekExpense ? formatN(weekExpense) : weekExpense || 0 }}</span>
           </b-col>
           <b-col></b-col>
         </b-row>
+        <div align="center">
+          <span><strong>{{ chartTitle }}</strong></span>
+        </div>
         <div class="chart">
-          <column-chart :dataset="{borderWidth: 0}" :data="historyChart"></column-chart>
+          <div class="chart-income" v-if="isDailyIncome">
+            <column-chart :dataset="{borderWidth: 0}" thousands="," prefix="Rp " :data="dailyIncome"></column-chart>
+          </div>
+          <div class="chart-expense" v-else>
+            <column-chart :dataset="{borderWidth: 0}" thousands="," prefix="Rp " :data="dailyExpense"></column-chart>
+          </div>
         </div>
       </div>
     </b-col>
@@ -47,19 +55,34 @@
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      historyChart: [
-        ['Sun', 12],
-        ['Mon', 46],
-        ['Tue', 28],
-        ['Wed', 8],
-        ['Thu', 44],
-        ['Fri', 30],
-        ['Sat', 18]
-      ],
+      isDailyIncome: true,
+      chartTitle: 'Income',
       transactionList: [1, 2, 3, 4, 5]
+    }
+  },
+  created() {
+    this.getStatistic(this.user.user_id)
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser', dailyIncome: 'getDailyIncome', dailyExpense: 'getDailyExpense', weekIncome: 'getWeekIncome', weekExpense: 'getweekExpense' })
+  },
+  methods: {
+    ...mapActions(['getStatistic']),
+    formatN(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    },
+    changeTab(e) {
+      if (e === 'expense') {
+        this.chartTitle = 'Expense'
+        this.isDailyIncome = false
+      } else {
+        this.chartTitle = 'Income'
+        this.isDailyIncome = true
+      }
     }
   }
 }
