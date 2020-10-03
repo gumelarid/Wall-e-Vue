@@ -7,8 +7,8 @@
           <span class="sidemenu-title">{{v.name}}</span>
         </div>
       </router-link>
-      <router-link to="#">
-        <div class="sidemenu-item item-logout">
+      <router-link to="#" @click="logout">
+        <div class="sidemenu-item item-logout" @click="logout">
           <b-icon icon="box-arrow-right" class="sidemenu-icon"></b-icon>
           <span class="sidemenu-title">Logout</span>
         </div>
@@ -17,6 +17,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -28,6 +29,9 @@ export default {
       ],
       currentPage: this.$route.path
     }
+  },
+  methods: {
+    ...mapActions(['logout'])
   }
 }
 
