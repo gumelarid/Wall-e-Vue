@@ -115,11 +115,32 @@
   color: rgba(169, 169, 169, 0.8);
 }
 
-.content .col-md-4 .btn-secondary {
+.content .col-md-4 .btn-secondary,
+.btn-continue .btn-secondary,
+.enter-pin .btn-secondary {
   border: transparent;
   background: #6379f4;
   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
   border-radius: 12px;
   font-size: 16px;
   color: #ffffff;
+}
+
+.enter-pin {
+  border: transparent;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+}
+
+.enter-pin h1 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #3a3d42;
+}
+
+.enter-pin p {
+  font-size: 16px;
+  line-height: 30px;
+  color: rgba(58, 61, 66, 0.6);
 }
