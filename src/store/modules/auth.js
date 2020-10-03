@@ -101,6 +101,12 @@ export default {
           })
       })
     },
+    logout(context) {
+      localStorage.removeItem('token')
+      sessionStorage.clear()
+      context.commit('delUser')
+      router.push('/login')
+    },
     getUserById(context, payload) {
       return new Promise((resolve, reject) => {
         axios

@@ -101,7 +101,7 @@ export default {
             this.$router.push('/pin')
           } else {
             setTimeout(() => {
-              this.$router.push('/Template')
+              this.$router.push('/dashboard')
             }, 2000)
           }
         })
