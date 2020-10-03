@@ -80,6 +80,11 @@ const routes = [
     path: '/status',
     name: 'Status',
     component: () => import('../views/Status.vue')
+  },
+  {
+    path: '/topup',
+    name: 'Topup',
+    component: () => import('../views/Topup.vue')
   }
 ]
 
