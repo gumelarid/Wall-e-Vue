@@ -75,11 +75,6 @@ const routes = [
     path: '/transfer',
     name: 'Transfer',
     component: () => import('../views/Transfer.vue')
-  },
-  {
-    path: '/continue',
-    name: 'ContTransfer',
-    component: () => import('../views/Transfer.vue')
   }
 ]
 
