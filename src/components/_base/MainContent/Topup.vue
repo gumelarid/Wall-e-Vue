@@ -2,6 +2,12 @@
   <div class="walle-transfer">
     <b-row class="heading">
       <b-col md="12">
+        <b-alert show variant="success" v-if="isSuccess">{{
+          this.resMsg
+        }}</b-alert>
+        <b-alert show variant="danger" v-if="isError">{{
+          this.resMsg
+        }}</b-alert>
         <p>Top Up</p>
       </b-col>
       <b-col md="6">
@@ -14,10 +20,10 @@
     </b-row>
     <b-row class="content text-center" align-h="center">
       <b-col md="12" align-self="center">
-        <b-form-input placeholder="0.00"></b-form-input>
+        <b-form-input placeholder="0.00" v-model="nominal"></b-form-input>
       </b-col>
       <b-col md="4" offset="8" class="text-right">
-        <b-button v-b-modal.enter-pin>Continue</b-button>
+        <b-button @click="submitTopup">Continue</b-button>
         <b-modal
           id="enter-pin"
           centered
@@ -71,6 +77,7 @@
 
 <script>
 import PincodeInput from 'vue-pincode-input'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -78,13 +85,36 @@ export default {
   },
   data() {
     return {
-      pin: ''
+      pin: '',
+      nominal: '',
+      isSuccess: false,
+      isError: false,
+      resMsg: ''
     }
   },
   methods: {
+    ...mapActions(['paymentTopup']),
     closeModal() {
       this.$bvModal.hide('enter-pin')
+    },
+    submitTopup() {
+      const setData = {
+        user_id: this.user.user_id,
+        history_nominal: this.nominal
+      }
+      this.paymentTopup(setData)
+        .then((response) => {
+          this.isSuccess = true
+          this.resMsg = response.msg
+        })
+        .catch((error) => {
+          this.isError = true
+          this.resMsg = error.msg
+        })
     }
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser' })
   }
 }
 </script>
