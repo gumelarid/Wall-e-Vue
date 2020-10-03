@@ -92,7 +92,7 @@ router.beforeEach((to, from, next) => {
     // if not, redirect to login page.
     if (!store.getters.isLogin) {
       next({
-        path: '/'
+        path: '/login'
       })
     } else {
       next()
