@@ -2,11 +2,28 @@ import axios from 'axios'
 
 export default {
   state: {
-    userData: {}
+    userData: {},
+    userList: {},
+    userSort: 'user_first_name',
+    userPage: 1,
+    userLimit: 5,
+    userTotal: 0
   },
   mutations: {
     setUserData(state, payload) {
       state.userData = payload
+    },
+    setUserList(state, payload) {
+      state.userList = payload
+    },
+    setUserPage(state, payload) {
+      state.userPage = payload
+    },
+    setUserSort(state, payload) {
+      state.userSort = payload
+    },
+    setUserTotal(state, payload) {
+      state.userTotal = payload
     }
   },
   actions: {
@@ -82,11 +99,41 @@ export default {
             reject(error.response)
           })
       })
+    },
+    getAllUsers(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`${process.env.VUE_APP_URL}/users/user?sort=${context.state.userSort}&page=${context.state.userPage}&limit=${context.state.userLimit}`)
+          .then(response => {
+            context.commit('setUserList', response.data.data)
+            context.commit('setUserTotal', response.data.pagination.totalData)
+            console.log(response.data)
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
     }
   },
   getters: {
     getUserData(state) {
       return state.userData
+    },
+    getUserList(state) {
+      return state.userList
+    },
+    getUserPage(state) {
+      return state.userPage
+    },
+    getUserSort(state) {
+      return state.userSort
+    },
+    getUserLimit(state) {
+      return state.userLimit
+    },
+    getTotalData(state) {
+      return state.userTotal
     }
   }
 }
