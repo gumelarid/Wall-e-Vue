@@ -87,6 +87,7 @@ export default {
         this.isAlert = false
         this.isMsg = ''
       } else {
+        this.codePin = ''
         this.isAlert = true
         this.isMsg = 'Oops!, is not your pin, Please input your valid Pin'
       }
@@ -98,11 +99,16 @@ export default {
       }
       this.patchPin(payload)
         .then((response) => {
+          this.getUserById(this.user.user_id)
           this.isAlert = false
           this.isSuccess = false
           this.isMsg = ''
           this.codePin = ''
           this.makeToast('success', 'Success', response.msg)
+          setTimeout(() => {
+            this.setPinNav(false)
+            this.setProfileNav(true)
+          })
         })
         .catch((err) => {
           this.isAlert = true
