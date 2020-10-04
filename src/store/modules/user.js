@@ -2,11 +2,15 @@ import axios from 'axios'
 
 export default {
   state: {
-    userData: {}
+    userData: {},
+    pin: ''
   },
   mutations: {
     setUserData(state, payload) {
       state.userData = payload
+    },
+    setPin(state, payload) {
+      state.pin = payload
     }
   },
   actions: {
