@@ -31,6 +31,22 @@ export default {
     }
   },
   actions: {
+    check(context, payload) {
+      console.log(payload)
+      return new Promise((resolve, reject) => {
+        axios
+          .get(
+            `${process.env.VUE_APP_URL}/users/pin/${payload.user_id}`,
+            payload.user_pin
+          )
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
     patchPin(context, payload) {
       return new Promise((resolve, reject) => {
         axios
