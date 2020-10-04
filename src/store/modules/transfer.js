@@ -5,7 +5,8 @@ export default {
     dailyIncome: {},
     dailyExpense: {},
     weekIncome: {},
-    weekExpense: {}
+    weekExpense: {},
+    transactionList: {}
   },
   mutations: {
     setDailyIncome(state, payload) {
@@ -19,6 +20,9 @@ export default {
     },
     setWeekExpense(state, payload) {
       state.weekExpense = payload
+    },
+    setTransactionList(state, payload) {
+      state.transactionList = payload
     }
   },
   actions: {
@@ -43,6 +47,17 @@ export default {
             reject(error.res)
           })
       })
+    },
+    getUserTransaction(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`${process.env.VUE_APP_URL}/transfer/${payload.user_id}?page=${payload.page}&limit=${payload.limit}`)
+          .then(res => {
+            context.commit('setTransactionList', res.data.data)
+          }).catch(error => {
+            reject(error.res)
+          })
+      })
     }
   },
   getters: {
@@ -57,6 +72,9 @@ export default {
     },
     getweekExpense(state) {
       return state.weekExpense
+    },
+    getTransactionList(state) {
+      return state.transactionList
     }
   }
 }

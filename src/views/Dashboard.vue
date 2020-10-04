@@ -56,8 +56,9 @@ export default {
     Footer,
     DashboardCard
   },
+  created() {},
   computed: {
-    ...mapGetters({ userData: 'getUserData' })
+    ...mapGetters({ userData: 'getUserData', user: 'getUser' })
   },
   methods: {
     formatN(x) {

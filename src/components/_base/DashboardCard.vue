@@ -38,14 +38,16 @@
           <div class="history-collections">
             <div class="history-item row" v-for="(v, i) in transactionList" :key="i">
               <b-col cols="2" class="history-image">
-                <img src="../../assets/selena-gomez.jpg" alt="">
+                <img :src="url + v.user_picture_b" alt="">
               </b-col>
               <b-col cols="5" class="history-info">
-                <span class="history-name">Samuel Suhi</span><br>
+                <span class="history-name">{{v.user_name_b}}</span><br>
                 <span class="history-status">Transfer</span>
               </b-col>
               <b-col cols="5" class="history-amount">
-                <span>+ Rp. 100.0000</span>
+                <span v-if="v.user_role === '1'">- </span>
+                <span v-else>+ </span>
+                <span>Rp. {{ v.transfer_amount ? formatN(v.transfer_amount) : v.transfer_amount }}</span>
               </b-col>
             </div>
           </div>
@@ -59,19 +61,26 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      url: process.env.VUE_APP_URL + '/',
       isDailyIncome: true,
-      chartTitle: 'Income',
-      transactionList: [1, 2, 3, 4, 5]
+      chartTitle: 'Income'
     }
   },
   created() {
     this.getStatistic(this.user.user_id)
+
+    const setData = {
+      user_id: this.user.user_id,
+      page: 1,
+      limit: 5
+    }
+    this.getUserTransaction(setData)
   },
   computed: {
-    ...mapGetters({ user: 'getUser', dailyIncome: 'getDailyIncome', dailyExpense: 'getDailyExpense', weekIncome: 'getWeekIncome', weekExpense: 'getweekExpense' })
+    ...mapGetters({ user: 'getUser', dailyIncome: 'getDailyIncome', dailyExpense: 'getDailyExpense', weekIncome: 'getWeekIncome', weekExpense: 'getweekExpense', transactionList: 'getTransactionList' })
   },
   methods: {
-    ...mapActions(['getStatistic']),
+    ...mapActions(['getStatistic', 'getUserTransaction']),
     formatN(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     },
