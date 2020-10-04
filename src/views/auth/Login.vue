@@ -26,7 +26,7 @@
           Transfering money is eassier than ever, you can access Wall-E wherever
           you are. Desktop, laptop, mobile phone? we cover all of that for you!
         </p>
-        <div class="form">
+        <div class="form" style="margin-top: 20px">
           <b-alert
             style="font-size: 13px; width: 350px"
             variant="warning"
@@ -97,6 +97,8 @@ export default {
             user_email: '',
             user_password: ''
           }
+          this.isAlert = false
+          this.isMsg = ''
           if (response.data.user_pin.length === 0) {
             this.$router.push('/pin')
           } else {
@@ -106,7 +108,6 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err)
           this.isAlert = true
           this.isMsg = err.data.msg
         })

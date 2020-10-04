@@ -40,6 +40,36 @@ export default {
           })
       })
     },
+    patchDataUser(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(
+            `${process.env.VUE_APP_URL}/users/patch/profile/${payload.user_id}`,
+            payload.form
+          )
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    patchPassword(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(
+            `${process.env.VUE_APP_URL}/users/patch/password/${payload.user_id}`,
+            payload.form
+          )
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
     getUserById(context, payload) {
       return new Promise((resolve, reject) => {
         axios
