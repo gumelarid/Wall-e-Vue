@@ -110,7 +110,10 @@ export default {
           this.getUserById(this.user.user_id)
           this.form = {}
           this.makeToast('success', 'Success', response.msg)
-          this.$bvModal.hide('edit-profile')
+          setTimeout(() => {
+            this.setChangePassNav(false)
+            this.setProfileNav(true)
+          })
         })
         .catch((error) => {
           this.isAlert = true
