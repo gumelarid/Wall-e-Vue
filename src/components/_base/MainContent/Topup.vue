@@ -22,8 +22,8 @@
       <b-col md="12" align-self="center">
         <b-form-input placeholder="0.00" v-model="nominal"></b-form-input>
       </b-col>
-      <b-col md="4" offset="8" class="text-right">
-        <b-button @click="submitTopup">Continue</b-button>
+      <b-col md="4" offset="8" class="text-right mt-3">
+        <b-button @click="showModal">Continue</b-button>
         <b-modal
           id="enter-pin"
           centered
@@ -32,6 +32,11 @@
           content-class="enter-pin"
         >
           <b-row>
+            <b-col md="12">
+              <b-alert show variant="danger" v-if="isError">{{
+                this.resMsg
+              }}</b-alert>
+            </b-col>
             <b-col md="10" align-self="center" style="margin: 0"
               ><h1>Enter PIN to Transfer</h1></b-col
             >
@@ -50,8 +55,7 @@
               </p>
             </b-col>
             <b-col md="12" class="text-center">
-              <b-alert variant="warning">Incorrect PIN</b-alert>
-              <b-form @submit.prevent="onSubmit()">
+              <b-form @submit.prevent="submitTopup">
                 <div class="input-pin">
                   <PincodeInput
                     v-model="pin"
@@ -93,28 +97,44 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['paymentTopup']),
+    ...mapActions(['paymentTopup', 'checkPin']),
     closeModal() {
       this.$bvModal.hide('enter-pin')
     },
+    showModal() {
+      this.$bvModal.show('enter-pin')
+    },
     submitTopup() {
-      const setData = {
-        user_id: this.user.user_id,
-        history_nominal: this.nominal
+      if (this.pin !== this.user.user_pin) {
+        this.isError = true
+        this.resMsg = 'Invalid Pin'
+      } else if (!this.pin) {
+        this.isError = true
+        this.resMsg = 'Pin must be filled'
+      } else {
+        const setData = {
+          user_id: this.user.user_id,
+          history_nominal: this.nominal
+        }
+
+        this.paymentTopup(setData)
+          .then((response) => {
+            this.isSuccess = true
+            this.resMsg = response.msg
+            this.$bvModal.hide('enter-pin')
+            this.nominal = ''
+          })
+          .catch((error) => {
+            this.isError = true
+            this.resMsg = error.msg
+            this.$bvModal.hide('enter-pin')
+            this.nominal = ''
+          })
       }
-      this.paymentTopup(setData)
-        .then((response) => {
-          this.isSuccess = true
-          this.resMsg = response.msg
-        })
-        .catch((error) => {
-          this.isError = true
-          this.resMsg = error.msg
-        })
     }
   },
   computed: {
-    ...mapGetters({ user: 'getUser' })
+    ...mapGetters({ user: 'getUserData' })
   }
 }
 </script>

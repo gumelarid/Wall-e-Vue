@@ -7,7 +7,8 @@ export default {
     userSort: 'user_first_name',
     userPage: 1,
     userLimit: 5,
-    userTotal: 0
+    userTotal: 0,
+    pin: ''
   },
   mutations: {
     setUserData(state, payload) {
@@ -24,6 +25,9 @@ export default {
     },
     setUserTotal(state, payload) {
       state.userTotal = payload
+    },
+    setPin(state, payload) {
+      state.pin = payload
     }
   },
   actions: {
