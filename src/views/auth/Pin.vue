@@ -75,8 +75,14 @@
             </div>
             <br />
             <b-button class="right-login-btn" type="submit" variant="primary"
-              >continue</b-button
-            >
+              >continue
+              <b-spinner
+                small
+                variant="light"
+                type="grow"
+                v-if="spinner"
+              ></b-spinner
+            ></b-button>
             <br />
           </b-form>
         </div>
@@ -99,7 +105,8 @@ export default {
       isAlert: false,
       isMsg: '',
       code: '',
-      onSuccess: false
+      onSuccess: false,
+      spinner: false
     }
   },
   computed: {
@@ -110,6 +117,7 @@ export default {
   methods: {
     ...mapActions(['patchPin']),
     onSubmit() {
+      this.spinner = true
       const payload = {
         user_id: this.user.user_id,
         user_pin: this.code
@@ -118,11 +126,13 @@ export default {
         .then((response) => {
           this.isAlert = false
           this.onSuccess = true
+          this.spinner = false
         })
         .catch((err) => {
           this.isAlert = true
           this.onSuccess = false
           this.isMsg = err.data.msg
+          this.spinner = false
         })
     }
   }

@@ -20,7 +20,7 @@
         <b-col md="6" offset-md="3">
           <b-form @submit.prevent="onCheckPin()">
             <b-alert
-              style="font-size: 13px"
+              style="font-size: 13px; width: 350px"
               variant="warning"
               :show="isAlert"
               >{{ isMsg }}</b-alert
@@ -47,8 +47,14 @@
               v-show="isSuccess"
               @click="onNewPin()"
               variant="primary"
-              >Change Pin</b-button
-            >
+              >Change Pin
+              <b-spinner
+                small
+                variant="light"
+                type="grow"
+                v-if="spinner"
+              ></b-spinner>
+            </b-button>
           </b-form>
         </b-col>
       </b-row>
@@ -68,6 +74,7 @@ export default {
     return {
       isSuccess: false,
       isAlert: false,
+      spinner: false,
       isMsg: '',
       codePin: ''
     }
@@ -93,6 +100,7 @@ export default {
       }
     },
     onNewPin() {
+      this.spinner = true
       const payload = {
         user_id: this.user.user_id,
         user_pin: this.codePin
@@ -106,11 +114,13 @@ export default {
           this.codePin = ''
           this.makeToast('success', 'Success', response.msg)
           setTimeout(() => {
+            this.spinner = false
             this.setPinNav(false)
             this.setProfileNav(true)
-          })
+          }, 2000)
         })
         .catch((err) => {
+          this.spinner = false
           this.isAlert = true
           this.isSuccess = true
           this.isMsg = err.data.msg

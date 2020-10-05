@@ -61,12 +61,12 @@
             <b-button class="right-login-btn" type="submit" variant="primary">
               <span class="mx-2">Login</span>
               <b-spinner
-              small
-              variant="light"
-              type="grow"
-              v-if="spinner"
+                small
+                variant="light"
+                type="grow"
+                v-if="spinner"
               ></b-spinner>
-              </b-button>
+            </b-button>
             <br />
             <div class="right-register">
               <p>
@@ -109,9 +109,11 @@ export default {
           this.isMsg = ''
           if (response.data.user_pin.length === 0) {
             this.$router.push('/pin')
+            this.spinner = false
           } else {
             setTimeout(() => {
               this.$router.push('/dashboard')
+              this.spinner = false
             }, 2000)
           }
         })

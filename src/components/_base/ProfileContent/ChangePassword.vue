@@ -65,8 +65,14 @@
 
             <br />
             <b-button class="right-login-btn" type="submit" variant="primary"
-              >Change Password</b-button
-            >
+              >Change Password
+              <b-spinner
+                small
+                variant="light"
+                type="grow"
+                v-if="spinner"
+              ></b-spinner>
+            </b-button>
           </b-form>
         </b-col>
       </b-row>
@@ -80,6 +86,7 @@ export default {
   name: 'ChangePassword',
   data() {
     return {
+      spinner: false,
       form: {},
       isAlert: false,
       isMsg: '',
@@ -99,6 +106,7 @@ export default {
   methods: {
     ...mapActions(['patchPassword', 'getUserById']),
     updatePassword() {
+      this.spinner = true
       const setData = {
         user_id: this.user.user_id,
         form: this.form
@@ -111,11 +119,13 @@ export default {
           this.form = {}
           this.makeToast('success', 'Success', response.msg)
           setTimeout(() => {
+            this.spinner = false
             this.setChangePassNav(false)
             this.setProfileNav(true)
-          })
+          }, 2000)
         })
         .catch((error) => {
+          this.spinner = false
           this.isAlert = true
           this.isMsg = error.data.msg
         })

@@ -100,8 +100,14 @@
             </div>
             <br />
             <b-button class="right-login-btn" type="submit" variant="primary"
-              >Sign Up</b-button
-            >
+              >Sign Up
+              <b-spinner
+                small
+                variant="light"
+                type="grow"
+                v-if="spinner"
+              ></b-spinner
+            ></b-button>
             <br />
             <div class="right-register">
               <p>
@@ -127,13 +133,15 @@ export default {
       isAlert: false,
       isSuccess: false,
       isMsg: '',
-      form: {}
+      form: {},
+      spinner: false
     }
   },
   methods: {
     ...mapActions(['register', 'activationEmail']),
     onSubmit() {
       // console.log(this.form)
+      this.spinner = true
       this.register(this.form)
         .then((response) => {
           const payload = {
@@ -153,17 +161,20 @@ export default {
               this.isAlert = false
               this.isMsg =
                 'Email has been sent !, please check your email, to activation your account'
+              this.spinner = false
             })
             .catch((error) => {
               this.isSuccess = false
               this.isAlert = true
               this.isMsg = error.data.msg
+              this.spinner = false
             })
         })
         .catch((err) => {
           this.isSuccess = false
           this.isAlert = true
           this.isMsg = err.data.msg
+          this.spinner = false
         })
     }
   }
