@@ -1,6 +1,6 @@
 <h1 align='center'>Wall - E</h1>
 
-A system website app for company to find the besst talent. And a system website app for talent to hired by company. [More about Vue](https://vuejs.org/)
+deskripsi. [More about Vue](https://vuejs.org/)
 
 ## Built With
 
