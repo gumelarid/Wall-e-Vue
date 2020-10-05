@@ -38,22 +38,32 @@
             <div class="password">
               <img src="../../assets/image/lock.png" alt="" />
               <b-form-input
-                id="input-3"
-                type="password"
+                id="input-2"
+                :type="type1"
                 required
                 placeholder="Enter your password"
                 v-model="form.user_password"
               ></b-form-input>
+              <b-icon
+                @click="showPassword1"
+                :icon="btnText1"
+                style="cursor: pointer"
+              ></b-icon>
             </div>
             <div class="password">
               <img src="../../assets/image/lock.png" alt="" />
               <b-form-input
                 id="input-3"
-                type="password"
+                :type="type2"
                 required
                 placeholder="Enter your password"
                 v-model="form.confirm_password"
               ></b-form-input>
+              <b-icon
+                @click="showPassword2"
+                :icon="btnText2"
+                style="cursor: pointer"
+              ></b-icon>
             </div>
 
             <br />
@@ -76,7 +86,11 @@ export default {
     return {
       isAlert: false,
       isMsg: '',
-      form: {}
+      form: {},
+      type1: 'password',
+      btnText1: 'eye-slash',
+      type2: 'password',
+      btnText2: 'eye-slash'
     }
   },
   methods: {
@@ -99,6 +113,24 @@ export default {
           this.isAlert = true
           this.isMsg = error.data.msg
         })
+    },
+    showPassword1() {
+      if (this.type1 === 'password') {
+        this.type1 = 'text'
+        this.btnText1 = 'eye'
+      } else {
+        this.type1 = 'password'
+        this.btnText1 = 'eye-slash'
+      }
+    },
+    showPassword2() {
+      if (this.type2 === 'password') {
+        this.type2 = 'text'
+        this.btnText2 = 'eye'
+      } else {
+        this.type2 = 'password'
+        this.btnText2 = 'eye-slash'
+      }
     }
   }
 }

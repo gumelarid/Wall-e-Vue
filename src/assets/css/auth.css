@@ -133,9 +133,9 @@
   width: 350px;
 }
 
-.right {
+/* .right {
   border-right: 1px solid rgb(236, 232, 241);
-}
+} */
 
 .right p {
   width: 350px;
@@ -154,5 +154,24 @@
 @media (max-width: 576px) {
   .left-side {
     display: none;
+  }
+  .left-title {
+    display: block;
+    color: blue;
+  }
+  .right-register {
+    width: 350px;
+    text-align: center;
+  }
+  .email {
+    width: 350px;
+  }
+  .password {
+    width: 350px;
+  }
+  .forgot {
+    font-size: 13px;
+    text-align: right;
+    width: 350px;
   }
 }

@@ -3,7 +3,7 @@
     <b-row>
       <b-col cols="12" sm="12" md="12" lg="7" xl="7" class="left-side">
         <router-link to="/"><h2 class="left-title">Wall-E</h2></router-link>
-        <div>
+        <div class="image">
           <div class="img-phone"></div>
           <div class="img-phone2"></div>
         </div>

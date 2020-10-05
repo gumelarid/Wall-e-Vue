@@ -28,11 +28,7 @@
         </div>
       </div>
       <div class="navigation">
-        <b-button
-          variant="primary"
-          class="mb-2 button-navigation"
-          @click="onPersonal()"
-        >
+        <b-button class="mb-2 button-navigation" @click="onPersonal()">
           <span class="nav-text">Personal Information</span>
           <b-icon
             class="nav-icon"
@@ -41,11 +37,7 @@
             style="width: 25px; height: 25px"
           ></b-icon>
         </b-button>
-        <b-button
-          variant="primary"
-          class="mb-2 button-navigation"
-          @click="onChangePassword()"
-        >
+        <b-button class="mb-2 button-navigation" @click="onChangePassword()">
           <span class="nav-text">Change Password</span>
           <b-icon
             class="nav-icon"
@@ -54,11 +46,7 @@
             style="width: 25px; height: 25px"
           ></b-icon>
         </b-button>
-        <b-button
-          variant="primary"
-          class="mb-2 button-navigation"
-          @click="onChangePin()"
-        >
+        <b-button class="mb-2 button-navigation" @click="onChangePin()">
           <span class="nav-text">Change Pin</span>
           <b-icon
             class="nav-icon"
@@ -67,11 +55,7 @@
             style="width: 25px; height: 25px"
           ></b-icon>
         </b-button>
-        <b-button
-          variant="primary"
-          class="mb-2 button-navigation"
-          @click="LogoutNow()"
-        >
+        <b-button class="mb-2 button-navigation" @click="LogoutNow()">
           <span class="nav-text">Logout</span>
         </b-button>
       </div>
@@ -145,7 +129,7 @@ export default {
           no: 'Cancel',
           yes: 'Yes'
         },
-        callback: confirm => {
+        callback: (confirm) => {
           if (confirm) {
             this.isLogout = confirm
             if (this.isLogout) {
@@ -263,6 +247,11 @@ export default {
   float: right;
   color: #4d4b57;
 }
+
+.navigation .button-navigation:hover {
+  background-color: #6379f4;
+}
+
 .button-navigation:hover > .nav-icon {
   color: white;
 }

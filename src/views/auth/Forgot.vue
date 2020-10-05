@@ -55,8 +55,17 @@
 
             <br />
             <b-button class="right-login-btn" type="submit" variant="primary"
-              >Confirm</b-button
-            >
+              >Confirm
+              <b-spinner
+                small
+                variant="light"
+                type="grow"
+                v-if="spinner"
+              ></b-spinner
+            ></b-button>
+            <div class="forgot">
+              <router-link to="/login">Cancel</router-link>
+            </div>
           </b-form>
         </div>
       </b-col>
@@ -71,6 +80,7 @@ export default {
   name: 'Forgot',
   data() {
     return {
+      spinner: false,
       isAlert: false,
       isSuccess: false,
       isMsg: '',
@@ -80,6 +90,7 @@ export default {
   methods: {
     ...mapActions(['forgotPassword']),
     onSubmit() {
+      this.spinner = true
       const payload = {
         user_email: this.form.user_email
       }
@@ -88,12 +99,14 @@ export default {
           this.form = {
             user_email: ''
           }
+          this.spinner = false
           this.isSuccess = true
           this.isAlert = false
           this.isMsg =
             'Email has been sent !, please check your email, to Reset your password'
         })
         .catch((error) => {
+          this.spinner = false
           this.isSuccess = false
           this.isAlert = true
           this.isMsg = error.data.msg

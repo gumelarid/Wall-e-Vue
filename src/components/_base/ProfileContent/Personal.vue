@@ -74,8 +74,14 @@
           ></b-input>
           <br />
           <b-button type="submit" variant="primary" style="border-radius: 10px"
-            >Update</b-button
-          >
+            >Update
+            <b-spinner
+              small
+              variant="light"
+              type="grow"
+              v-if="spinner"
+            ></b-spinner
+          ></b-button>
         </div>
       </b-form>
     </b-modal>
@@ -89,6 +95,7 @@ export default {
   name: 'Personal',
   data() {
     return {
+      spinner: false,
       isAlert: false,
       isMsg: '',
       form: {}
@@ -110,6 +117,7 @@ export default {
       this.$bvModal.show('edit-profile')
     },
     updateData() {
+      this.spinner = true
       const data = {
         user_id: this.user.user_id,
         form: this.form
@@ -119,10 +127,12 @@ export default {
           this.getUserById(this.user.user_id)
           this.isAlert = false
           this.isMsg = ''
+          this.spinner = false
           this.makeToast('success', 'Success', response.msg)
           this.$bvModal.hide('edit-profile')
         })
         .catch((error) => {
+          this.spinner = false
           this.isAlert = true
           this.isMsg = error.data.msg
         })
