@@ -66,12 +66,32 @@ const routes = [
   {
     path: '/history',
     name: 'History',
-    component: () => import('../views/History.vue')
+    component: () => import('../views/History.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/transfer',
     name: 'Transfer',
-    component: () => import('../views/Transfer.vue')
+    component: () => import('../views/Transfer.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/transfer-set',
+    name: 'Transfer Set',
+    component: () => import('../views/Transfer_Set.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/transfer-confirmation',
+    name: 'Transfer Confirmation',
+    component: () => import('../views/Transfer_Confirmation.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/transfer-status',
+    name: 'Transfer Status',
+    component: () => import('../views/Transfer_Status.vue'),
+    meta: { requiresAuth: true }
   },
   {
     path: '/profile',

@@ -6,7 +6,10 @@ export default {
     dailyExpense: {},
     weekIncome: {},
     weekExpense: {},
-    transactionList: {}
+    transactionList: {},
+    userTargetId: '',
+    userTarget: {},
+    transferData: {}
   },
   mutations: {
     setDailyIncome(state, payload) {
@@ -23,6 +26,15 @@ export default {
     },
     setTransactionList(state, payload) {
       state.transactionList = payload
+    },
+    setUserTargetId(state, payload) {
+      state.userTargetId = payload
+    },
+    setuserTarget(state, payload) {
+      state.userTarget = payload
+    },
+    setTransferData(state, payload) {
+      state.transferData = payload
     }
   },
   actions: {
@@ -41,10 +53,10 @@ export default {
 
             context.commit('setWeekIncome', res.data.data.weekIncome[0].total)
             context.commit('setWeekExpense', res.data.data.weekExpense[0].total)
-            resolve(res.data.data)
+            resolve(res.data)
           })
           .catch(error => {
-            reject(error.res)
+            reject(error.response)
           })
       })
     },
@@ -54,8 +66,32 @@ export default {
           .get(`${process.env.VUE_APP_URL}/transfer/${payload.user_id}?page=${payload.page}&limit=${payload.limit}`)
           .then(res => {
             context.commit('setTransactionList', res.data.data)
+            resolve(res.data)
           }).catch(error => {
-            reject(error.res)
+            reject(error.response)
+          })
+      })
+    },
+    getUserTarget(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`${process.env.VUE_APP_URL}/users/${payload}`)
+          .then(res => {
+            context.commit('setuserTarget', res.data.data[0])
+            resolve(res.data)
+          }).catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    postTransfer(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(`${process.env.VUE_APP_URL}/transfer`, payload)
+          .then(res => {
+            resolve(res.data)
+          }).catch(error => {
+            reject(error.response)
           })
       })
     }
@@ -75,6 +111,15 @@ export default {
     },
     getTransactionList(state) {
       return state.transactionList
+    },
+    getUserTargetId(state) {
+      return state.userTargetId
+    },
+    getUserTarget(state) {
+      return state.userTarget
+    },
+    getTransferData(state) {
+      return state.transferData
     }
   }
 }

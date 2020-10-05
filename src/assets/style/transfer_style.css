@@ -43,10 +43,15 @@
 
 .list-group-item {
   margin: 10px 0px;
-  border: transparent;
+  border: transparent !important;
   padding: 0;
+  cursor: pointer;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
+}
+
+.list-group-item:hover {
+  background: aliceblue
 }
 
 .list-group-item img {
@@ -63,13 +68,25 @@
   font-weight: bold;
   font-size: 16px;
   line-height: 22px;
-  color: #4d4b57;
+  color: #514F5B;
 }
 
 .list-group-item p.phone {
   font-size: 14px;
   line-height: 19px;
   color: #7a7886;
+}
+
+.list-group-item .title {
+    color: #7A7886;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.list-group-item .value {
+  font-weight: 400;
+  font-size: 20px;
+  color: #514F5B
 }
 
 .walle-transfer .col-md-6 p {
@@ -123,7 +140,14 @@
   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
   border-radius: 12px;
   font-size: 16px;
+  padding: 15px 40px;
   color: #ffffff;
+}
+
+.content .col-md-4 .btn-secondary,
+.btn-continue .btn-secondary:hover,
+.enter-pin .btn-secondary:hover {
+  background: #007bff;
 }
 
 .enter-pin {

@@ -5,14 +5,16 @@
         <p>Search Receiver</p>
       </b-col>
       <b-col md="12">
-        <b-input-group>
-          <b-input-group-append>
-            <b-input-group-text>
-              <b-icon icon="search" />
-            </b-input-group-text>
-          </b-input-group-append>
-          <b-input type="search" placeholder="Search receiver here"></b-input>
-        </b-input-group>
+        <b-form @submit.prevent="search">
+          <b-input-group>
+            <b-input-group-append>
+              <b-input-group-text>
+                <b-icon icon="search" />
+              </b-input-group-text>
+            </b-input-group-append>
+            <b-input type="search" placeholder="Search receiver here" v-model="targetName"></b-input>
+          </b-input-group>
+        </b-form>
       </b-col>
       <b-col md="12">
         <div class="list-group">
@@ -41,7 +43,8 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      url: process.env.VUE_APP_URL + '/'
+      url: process.env.VUE_APP_URL + '/',
+      targetName: ''
     }
   },
   computed: {
@@ -50,22 +53,29 @@ export default {
       page: 'getUserPage',
       sort: 'getUserSort',
       limit: 'getUserLimit',
-      totalData: 'getTotalData'
+      totalData: 'getTotalData',
+      userTargetId: 'getUserTargetId'
     })
   },
   created() {
+    this.setSearchName('')
     this.getAllUsers()
   },
   methods: {
     ...mapActions(['getAllUsers']),
-    ...mapMutations(['setUserPage']),
-    continueTransfer(data) {
-      console.log(data)
-      // this.$router.push('/continue')
+    ...mapMutations(['setUserPage', 'setUserTargetId', 'setSearchName']),
+    async continueTransfer(e) {
+      await this.setUserTargetId(e.user_id)
+      this.$router.push(`/transfer-set?to=${e.user_id}&n=${e.user_first_name}+${e.user_last_name}`)
     },
     paginationSetup(data) {
       console.log(data)
       this.setUserPage(data)
+      this.getAllUsers()
+    },
+    search() {
+      console.log(this.targetName)
+      this.setSearchName(this.targetName)
       this.getAllUsers()
     }
   }

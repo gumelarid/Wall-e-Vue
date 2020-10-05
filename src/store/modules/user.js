@@ -8,7 +8,8 @@ export default {
     userPage: 1,
     userLimit: 5,
     userTotal: 0,
-    pin: ''
+    pin: '',
+    searchName: ''
   },
   mutations: {
     setUserData(state, payload) {
@@ -28,6 +29,9 @@ export default {
     },
     setPin(state, payload) {
       state.pin = payload
+    },
+    setSearchName(state, payload) {
+      state.searchName = payload
     }
   },
   actions: {
@@ -123,7 +127,7 @@ export default {
     getAllUsers(context, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`${process.env.VUE_APP_URL}/users/user?sort=${context.state.userSort}&page=${context.state.userPage}&limit=${context.state.userLimit}`)
+          .get(`${process.env.VUE_APP_URL}/users/user/name?search=${context.state.searchName}&page=${context.state.userPage}&limit=${context.state.userLimit}`)
           .then(response => {
             context.commit('setUserList', response.data.data)
             context.commit('setUserTotal', response.data.pagination.totalData)

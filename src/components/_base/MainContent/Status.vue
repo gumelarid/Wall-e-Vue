@@ -38,7 +38,7 @@
             <b-row>
               <b-col md="10" align-self="start">
                 <p class="name">Amount</p>
-                <p class="phone">Rp100000</p>
+                <p class="phone">Rp {{ transfData.transfer_amount }}</p>
               </b-col>
             </b-row>
           </b-list-group-item>
@@ -46,7 +46,7 @@
             <b-row>
               <b-col md="10" align-self="start">
                 <p class="name">Balance Left</p>
-                <p class="phone">Rp20000</p>
+                <p class="phone">Rp {{ transfData.balance_left }}</p>
               </b-col>
             </b-row>
           </b-list-group-item>
@@ -54,7 +54,7 @@
             <b-row>
               <b-col md="10" align-self="start">
                 <p class="name">Date &#38; Time</p>
-                <p class="phone">May 11, 2020 - 12.20</p>
+                <p class="phone">{{ new Date() }}</p>
               </b-col>
             </b-row>
           </b-list-group-item>
@@ -62,7 +62,7 @@
             <b-row>
               <b-col md="10" align-self="start">
                 <p class="name">Notes</p>
-                <p class="phone">For buying some socks</p>
+                <p class="phone">{{ transfData.transfer_note }}</p>
               </b-col>
             </b-row>
           </b-list-group-item>
@@ -78,11 +78,11 @@
           <b-list-group-item>
             <b-row>
               <b-col md="2">
-                <b-img :src="require('../../../assets/selena-gomez.jpg')" />
+                <b-img :src="url + transfData.user_b_picture" />
               </b-col>
               <b-col md="10" align-self="center">
-                <p class="name">Samuel Suhi</p>
-                <p class="phone">+628888888</p>
+                <p class="name">{{ transfData.user_b_name }}</p>
+                <p class="phone">{{ transfData.user_b_phone }}</p>
               </b-col>
             </b-row>
           </b-list-group-item>
@@ -99,7 +99,9 @@
         </b-button>
       </b-col>
       <b-col md="3">
-        <b-button block>Back to home</b-button>
+        <router-link to="/dashboard">
+          <b-button block>Back to home</b-button>
+        </router-link>
       </b-col>
     </b-row>
     <b-row v-else>
@@ -109,6 +111,20 @@
     </b-row>
   </div>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  data() {
+    return {
+      isSuccess: true,
+      url: process.env.VUE_APP_URL + '/'
+    }
+  },
+  computed: {
+    ...mapGetters({ transfData: 'getTransferData' })
+  }
+}
+</script>
 
 <style src="../../../assets/style/transfer_style.css"></style>
 <style scoped>
@@ -138,13 +154,3 @@
   padding: 0.8rem;
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      isSuccess: true
-    }
-  }
-}
-</script>
