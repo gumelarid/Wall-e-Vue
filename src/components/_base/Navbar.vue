@@ -28,6 +28,7 @@
                       <b-dropdown variant="link" right toggle-class="text-decoration-none" no-caret>
                         <template v-slot:button-content>
                           <b-icon icon="bell" @click="showNotif"></b-icon>
+                          <span class="notif-count" @click="showNotif" v-if="notifCount > 0">{{ notifCount }}</span>
                         </template>
                         <b-dropdown-item href="#" v-for="(v, i) in userNotif" :key="i">
                           <b-icon icon="arrow-down"></b-icon>
@@ -54,7 +55,7 @@
 <style src="../../assets/style/walle_style.css"></style>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -66,22 +67,27 @@ export default {
     ...mapGetters({
       user: 'getUser',
       userData: 'getUserData',
-      userNotif: 'getUserNotif'
+      userNotif: 'getUserNotif',
+      notifCount: 'getNotifCount'
     })
   },
   created() {
     this.getUserById(this.user.user_id)
+    this.getUserNotifCount(this.user.user_id)
   },
   methods: {
-    ...mapActions(['getUserById', 'getUserNotification']),
+    ...mapActions(['getUserById', 'getUserNotification', 'getUserNotifCount']),
+    ...mapMutations(['setNotifCount']),
     formatN(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     },
     pushToProfile() {
       this.$router.push('/profile')
     },
-    showNotif() {
-      this.getUserNotification(this.userData.user_id)
+    async showNotif() {
+      console.log(this.notifCount)
+      await this.getUserNotification(this.userData.user_id)
+      this.setNotifCount(0)
     }
   }
 }

@@ -26,7 +26,7 @@
                     <b-icon icon="arrow-up"></b-icon>
                     <span>Transfer</span>
                   </router-link>
-                  <router-link to="/top-up" class="card-btn">
+                  <router-link to="/topup" class="card-btn">
                     <b-icon icon="plus"></b-icon>
                     <span>Top Up</span>
                   </router-link>

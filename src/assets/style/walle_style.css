@@ -70,6 +70,17 @@
     margin-left: 5px;
 }
 
+.notification .notif-count {
+    background: #6379f4;
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 50px;
+    font-size: 13px;
+    position: relative;
+    left: -12px;
+    top: -8px;
+}
+
 .nav-profile .notification .notif-icon {
     font-size: 18px;
     cursor: pointer;
