@@ -22,11 +22,11 @@ Wall-e
 
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
 2. Node_modules `npm install` or `yarn install`
-3. Backend API Vacatech [`here`](https://github.com/NHidayat/Wall-e-Express)
+3. Backend API Walle [`here`](https://github.com/NHidayat/Wall-e-Express)
 
 ## Getting Started
 
-1. Download this Project or you can type `git clone https://github.com/NHidayat/Wall-e-Vue`
+1. Download this Project or you can type `git clone https://github.com/NHidayat/Wall-e-Vue.git`
 2. Open app's directory in CMD or Terminal
 3. Type `npm install` or `yarn install`
 4. Add .env file at root folder project
@@ -44,7 +44,7 @@ VUE_APP_ENDPOINT = [Backend API]
 
 ## Team
 
-> All Members of Vacateam
+> All Members of Walleteam
 
 |    <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Full-Stack Developer & Team Leader**</a>     |              <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a>               |           <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a>           | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Back-End Developer**</a> |             <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Back-End Developer**</a>              |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
