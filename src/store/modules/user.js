@@ -131,7 +131,6 @@ export default {
           .then(response => {
             context.commit('setUserList', response.data.data)
             context.commit('setUserTotal', response.data.pagination.totalData)
-            console.log(response.data)
             resolve(response.data)
           })
           .catch(error => {

@@ -27,24 +27,17 @@
                     <div>
                       <b-dropdown variant="link" right toggle-class="text-decoration-none" no-caret>
                         <template v-slot:button-content>
-                          <b-icon icon="bell"></b-icon>
+                          <b-icon icon="bell" @click="showNotif"></b-icon>
                         </template>
-                        <b-dropdown-item href="#">
+                        <b-dropdown-item href="#" v-for="(v, i) in userNotif" :key="i">
                           <b-icon icon="arrow-down"></b-icon>
                           <div class="notif-detail">
-                            <span class="notif-subject">Transfered from Joshua Lee</span><br />
-                          <span class="notif-pricing">Rp 22.000</span>
-                          </div>
-                        </b-dropdown-item>
-                        <b-dropdown-item href="#">
-                          <b-icon icon="arrow-up"></b-icon>
-                          <div class="notif-detail">
-                            <span class="notif-subject">Transfer to Jessica Lee</span><br />
-                          <span class="notif-pricing">Rp 22.000</span>
+                            <span class="notif-subject">{{ v.notif_subject }}</span><br />
+                          <span class="notif-pricing">Rp {{ v.transfer_amount ? formatN(v.transfer_amount) : v.transfer_amount }}</span>
                           </div>
                         </b-dropdown-item>
                         <div align="center">
-                          <router-link to="/transfer">See All</router-link>
+                          <router-link to="/history">See All</router-link>
                         </div>
                       </b-dropdown>
                     </div>
@@ -72,16 +65,23 @@ export default {
   computed: {
     ...mapGetters({
       user: 'getUser',
-      userData: 'getUserData'
+      userData: 'getUserData',
+      userNotif: 'getUserNotif'
     })
   },
   created() {
     this.getUserById(this.user.user_id)
   },
   methods: {
-    ...mapActions(['getUserById']),
+    ...mapActions(['getUserById', 'getUserNotification']),
+    formatN(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    },
     pushToProfile() {
       this.$router.push('/profile')
+    },
+    showNotif() {
+      this.getUserNotification(this.userData.user_id)
     }
   }
 }
