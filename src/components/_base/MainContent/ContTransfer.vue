@@ -26,7 +26,7 @@
         </p>
       </b-col>
     </b-row>
-    <b-row class="content text-center" align-h="center">
+    <b-row class="content text-center" align-h="center" v-if="user.user_id !== userTarget.user_id">
       <b-col md="12" align-self="center">
         <b-form-input placeholder="0.00" autofocus type="number" min="1" v-model="transfer_amount"></b-form-input>
       </b-col>
@@ -64,6 +64,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      user: 'getUser',
       userTarget: 'getUserTarget',
       userData: 'getUserData'
     })

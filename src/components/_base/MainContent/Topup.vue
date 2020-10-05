@@ -134,11 +134,12 @@ export default {
 
         this.paymentTopup(setData)
           .then((response) => {
-            this.isSuccess = true
-            this.resMsg = response.msg
             this.$bvModal.hide('enter-pin')
             this.nominal = ''
-            this.$router.push('/dashboard')
+            this.makeToast('success', 'Hellow Friend', response.msg)
+            setTimeout(() => {
+              this.$router.push('/dashboard')
+            }, 5000)
           })
           .catch((error) => {
             this.isError = true
@@ -147,6 +148,13 @@ export default {
             this.nominal = ''
           })
       }
+    },
+    makeToast(variant, title, msg) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   },
   computed: {
