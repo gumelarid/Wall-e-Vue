@@ -7,6 +7,7 @@ import Forgot from '../views/auth/Forgot.vue'
 import SetPassword from '../views/auth/SetPassword.vue'
 import Activated from '../views/auth/Activated.vue'
 import Topup from '../views/Topup.vue'
+import TopupMidtrans from '../views/Topup_Midtrans.vue'
 
 import Profile from '../views/Profile.vue'
 
@@ -100,9 +101,15 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/topup-v2',
+    name: 'Topup V2',
+    component: Topup,
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/topup',
     name: 'Topup',
-    component: Topup,
+    component: TopupMidtrans,
     meta: { requiresAuth: true }
   }
 ]

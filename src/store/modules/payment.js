@@ -13,7 +13,20 @@ export default {
             resolve(response.data)
           })
           .catch(error => {
+            console.log(error.response)
             reject(error.response.data)
+          })
+      })
+    },
+    paymentTopupMidtrans(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(`${process.env.VUE_APP_URL}/payment`, payload)
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
           })
       })
     }

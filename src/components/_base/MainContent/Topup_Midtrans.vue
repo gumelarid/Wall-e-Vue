@@ -13,6 +13,9 @@
       </b-col>
       <b-col md="4" offset="8" class="btn-continue text-right"> </b-col>
     </b-row>
+    <div class="link-midtrans col-md-12" align="center" v-if="link">
+      <a :href="link" target="_blank" class="mt-3 mb-3" style="background: aqua; padding: 20px 40px; border-radius: 50px; border: 0; outline: 0 ">Paid Now</a>
+    </div>
     <b-row class="content text-center" align-h="center">
       <b-col md="12" align-self="center">
         <b-form-input placeholder="0.00" v-model="nominal" style="border: transparent"></b-form-input>
@@ -73,11 +76,12 @@ export default {
       isSuccess: false,
       isError: false,
       resMsg: '',
+      link: false,
       spinner: false
     }
   },
   methods: {
-    ...mapActions(['paymentTopup', 'checkPin']),
+    ...mapActions(['paymentTopupMidtrans', 'checkPin']),
     closeModal() {
       this.$bvModal.hide('enter-pin')
     },
@@ -104,20 +108,21 @@ export default {
           history_nominal: this.nominal
         }
 
-        this.paymentTopup(setData)
+        this.paymentTopupMidtrans(setData)
           .then((response) => {
             this.$bvModal.hide('enter-pin')
             this.nominal = ''
+            this.link = response.data
+            console.log(response)
+            this.spinner = false
             this.makeToast('success', 'Hellow Friend', response.msg)
-            setTimeout(() => {
-              this.$router.push('/dashboard')
-            }, 5000)
           })
           .catch((error) => {
             this.isError = true
             this.resMsg = error.msg
             this.$bvModal.hide('enter-pin')
             this.nominal = ''
+            console.log(error)
             this.spinner = false
           })
       }

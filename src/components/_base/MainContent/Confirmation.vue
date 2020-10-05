@@ -82,7 +82,10 @@
                   <PincodeInput v-model="pin" placeholder="_" :autofocus="false" :length="6" required />
                 </div>
                 <div class="btn-submit float-right mt-5">
-                  <b-button type="submit">continue</b-button>
+                  <b-button type="submit">
+                    continue
+                    <b-spinner small variant="light" type="grow" v-if="spinner"></b-spinner>
+                  </b-button>
                 </div>
               </b-form>
             </b-col>
@@ -105,7 +108,8 @@ export default {
       pin: '',
       isAlert: false,
       alertMsg: '',
-      url: process.env.VUE_APP_URL + '/'
+      url: process.env.VUE_APP_URL + '/',
+      spinner: false
     }
   },
   created() {
@@ -129,6 +133,7 @@ export default {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     },
     onSubmit() {
+      this.spinner = true
       const setData = {
         user_id_a: this.transferData.user_id_a,
         user_id_b: this.transferData.user_id_b,
@@ -140,13 +145,16 @@ export default {
         console.log(false)
         this.isAlert = true
         this.alertMsg = 'Your PIN is Wrong'
+        this.spinner = false
         this.pin = ''
       } else {
         this.isAlert = false
         this.postTransfer(setData)
           .then(res => {
             this.$router.push('transfer-status')
+            this.spinner = false
           }).catch(err => {
+            this.spinner = false
             this.isAlert = true
             this.alertMsg = err.data.msg
           })
