@@ -133,6 +133,7 @@ export default {
         user_id_a: this.transferData.user_id_a,
         user_id_b: this.transferData.user_id_b,
         user_pin: this.pin,
+        transfer_note: this.transferData.transfer_note,
         transfer_amount: this.transferData.transfer_amount
       }
       if (this.pin !== this.userData.user_pin) {

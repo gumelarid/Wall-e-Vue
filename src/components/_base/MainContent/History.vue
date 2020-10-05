@@ -15,7 +15,7 @@
               </b-col>
               <b-col cols="7" align-self="center">
                 <p class="name">{{ v.user_name_b }}</p>
-                <p class="note">{{ v.note }}</p>
+                <p class="note">{{ v.transfer_note }}</p>
               </b-col>
               <b-col cols="3" v-if="v.user_role === '2'" align-self="center">
                 <p class="nominal In">+ Rp {{ v.transfer_amount }}</p>

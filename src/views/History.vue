@@ -23,7 +23,7 @@ import Footer from '../components/_base/Footer.vue'
 import Content from '../components/_base/MainContent/History.vue'
 
 export default {
-  title: 'Dashboard | Wall-e',
+  title: 'History | Wall-e',
   name: 'History',
   components: {
     Navbar,
