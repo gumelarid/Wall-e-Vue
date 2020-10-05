@@ -10,7 +10,7 @@
             <b-button class="btn-prim">Login</b-button>
           </router-link>
         </b-col>
-        <b-col md="2" sm="2" class="text-right">
+        <b-col md="2" sm="2">
           <router-link to="/register">
             <b-button class="btn-sec">Register</b-button>
           </router-link>
@@ -23,7 +23,7 @@
             :src="require('../assets/illustration/phone.png')"
           />
         </b-col>
-        <b-col md="6" sm="6">
+        <b-col md="5" sm="5">
           <div class="headline">
             <h1>Awesome App For Saving <span class="primary">Time.</span></h1>
             <p>
@@ -235,8 +235,7 @@
   </div>
 </template>
 
-<style src="../assets/style/landingpage_style.css">
-</style>
+<style src="../assets/style/landingpage_style.css"></style>
 
 <script>
 export default {
