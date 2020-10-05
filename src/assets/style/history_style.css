@@ -27,7 +27,7 @@
 
 .list-group-item {
   border: transparent;
-  padding: 0;
+  padding: 0 15px;
 }
 
 .list-group-item .row {

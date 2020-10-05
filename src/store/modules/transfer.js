@@ -9,7 +9,10 @@ export default {
     transactionList: {},
     userTargetId: '',
     userTarget: {},
-    transferData: {}
+    transferData: {},
+    historyPage: 1,
+    historyLimit: 6,
+    historyTotal: ''
   },
   mutations: {
     setDailyIncome(state, payload) {
@@ -35,6 +38,12 @@ export default {
     },
     setTransferData(state, payload) {
       state.transferData = payload
+    },
+    setHistoryTotal(state, payload) {
+      state.historyTotal = payload
+    },
+    setHistoryPage(state, payload) {
+      state.historyPage = payload
     }
   },
   actions: {
@@ -65,9 +74,25 @@ export default {
         axios
           .get(`${process.env.VUE_APP_URL}/transfer/${payload.user_id}?page=${payload.page}&limit=${payload.limit}`)
           .then(res => {
+            console.log(res.data.data)
             context.commit('setTransactionList', res.data.data)
             resolve(res.data)
           }).catch(error => {
+            reject(error.response)
+          })
+      })
+    },
+    getUserHistory_Transaction(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`${process.env.VUE_APP_URL}/transfer/${payload.user_id}?page=${context.state.historyPage}&limit=${context.state.historyLimit}`)
+          .then(res => {
+            console.log(res.data.data)
+            context.commit('setTransactionList', res.data.data)
+            context.commit('setHistoryTotal', res.data.pagination.totalData)
+            resolve(res.data)
+          }).catch(error => {
+            console.log(error.response)
             reject(error.response)
           })
       })
@@ -120,6 +145,15 @@ export default {
     },
     getTransferData(state) {
       return state.transferData
+    },
+    getHistoryPage(state) {
+      return state.historyPage
+    },
+    getHistoryLimit(state) {
+      return state.historyLimit
+    },
+    getHistoryTotal(state) {
+      return state.historyTotal
     }
   }
 }
