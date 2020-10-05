@@ -58,9 +58,15 @@
               <router-link to="/forgot">Forgot password?</router-link>
             </div>
             <br />
-            <b-button class="right-login-btn" type="submit" variant="primary"
-              >Login</b-button
-            >
+            <b-button class="right-login-btn" type="submit" variant="primary">
+              <span class="mx-2">Login</span>
+              <b-spinner
+              small
+              variant="light"
+              type="grow"
+              v-if="spinner"
+              ></b-spinner>
+              </b-button>
             <br />
             <div class="right-register">
               <p>
@@ -84,12 +90,14 @@ export default {
     return {
       isAlert: false,
       isMsg: '',
-      form: {}
+      form: {},
+      spinner: false
     }
   },
   methods: {
     ...mapActions(['login']),
     onSubmit() {
+      this.spinner = true
       this.login(this.form)
         .then((response) => {
           this.makeToast('success', 'Success', response.msg)
@@ -108,6 +116,7 @@ export default {
           }
         })
         .catch((err) => {
+          this.spinner = false
           this.isAlert = true
           this.isMsg = err.data.msg
         })
