@@ -7,7 +7,7 @@
     <a href="https://github.com/NHidayat/Wall-e-Vue/issues">Request Feature</a>
   </p>
 
-![Image Banner](https://user-images.githubusercontent.com/40691793/95201131-ad4a7d00-0809-11eb-988a-c96ee45e4ad6.jpg)
+![Image Banner](https://user-images.githubusercontent.com/40691793/95208107-e1766b80-0812-11eb-8d01-5afe9cc70fb7.jpg)
 
 ## About The Project
 
