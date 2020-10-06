@@ -1,6 +1,6 @@
 <h1 align='center'>Vue JS - Wall-e</h1>
   <p align="center">
-    <a href="link_deploy">View Demo</a>
+    <a href="https://wal-e.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/NHidayat/Wall-e-Vue/issues">Report Bug</a>
     ·
