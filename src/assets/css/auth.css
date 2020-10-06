@@ -174,4 +174,7 @@
     text-align: right;
     width: 350px;
   }
+  .right {
+    padding: 5px;
+  }
 }

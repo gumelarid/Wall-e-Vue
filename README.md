@@ -1,13 +1,13 @@
 <h1 align='center'>Vue JS - Wall-e</h1>
   <p align="center">
-    <a href="link_deploy">View Demo</a>
+    <a href="https://wal-e.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/NHidayat/Wall-e-Vue/issues">Report Bug</a>
     ·
     <a href="https://github.com/NHidayat/Wall-e-Vue/issues">Request Feature</a>
   </p>
 
-![Image Banner](https://raw.githubusercontent.com/Bagusth15/team-project/master/image_banner.jpg)
+![Image Banner](https://user-images.githubusercontent.com/40691793/95208107-e1766b80-0812-11eb-8d01-5afe9cc70fb7.jpg)
 
 ## About The Project
 
@@ -32,7 +32,7 @@ Wall-e
 4. Add .env file at root folder project
 
 ```sh
-VUE_APP_ENDPOINT = [Backend API]
+VUE_APP_URL = URL BACKEND
 ```
 
 5. Type `npm run serve`

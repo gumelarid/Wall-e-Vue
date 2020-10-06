@@ -258,4 +258,10 @@ export default {
 .button-navigation:hover > .nav-text {
   color: white;
 }
+
+@media (max-width: 576px) {
+  .button-navigation {
+    width: 300px;
+  }
+}
 </style>
