@@ -103,10 +103,16 @@
 	color: #7A7886;
 }
 
-.history-item .history-amount {
+.history-item .history-amount.plus {
 	text-align-last: right;
 	padding-right: 0;
 	color: #1EC15F;
+}
+
+.history-item .history-amount.minus {
+    text-align-last: right;
+    padding-right: 0;
+    color: red;
 }
 
 /*==============Chart============*/

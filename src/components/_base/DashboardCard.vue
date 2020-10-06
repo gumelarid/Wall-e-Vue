@@ -42,11 +42,15 @@
               </b-col>
               <b-col cols="5" class="history-info">
                 <span class="history-name">{{v.user_name_b}}</span><br>
-                <span class="history-status">Transfer</span>
+                <span class="history-status" v-if="v.user_role === '1'">Transfer</span>
+                <span class="history-status" v-else>Transfered</span>
               </b-col>
-              <b-col cols="5" class="history-amount">
-                <span v-if="v.user_role === '1'">- </span>
-                <span v-else>+ </span>
+              <b-col cols="5" class="history-amount minus"  v-if="v.user_role === '1'">
+                <span>- </span>
+                <span>Rp. {{ v.transfer_amount ? formatN(v.transfer_amount) : v.transfer_amount }}</span>
+              </b-col>
+              <b-col cols="5" class="history-amount plus"  v-else>
+                <span>+ </span>
                 <span>Rp. {{ v.transfer_amount ? formatN(v.transfer_amount) : v.transfer_amount }}</span>
               </b-col>
             </div>

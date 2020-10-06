@@ -26,6 +26,7 @@ export default {
         { to: '/dashboard', name: 'Dashboard', icon: 'grid' },
         { to: '/transfer', name: 'Transfer', icon: 'arrow-up' },
         { to: '/topup', name: 'Top Up', icon: 'plus' },
+        { to: '/topup-v2', name: 'Manual Top Up', icon: 'plus' },
         { to: '/profile', name: 'Profile', icon: 'person' }
       ],
       currentPage: this.$route.path
