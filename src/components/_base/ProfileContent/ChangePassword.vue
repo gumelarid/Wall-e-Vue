@@ -240,9 +240,19 @@ export default {
   border-radius: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 576px) {
   .personal-info .personal-describ {
     width: 100%;
+  }
+  .password {
+    width: 300px;
+    padding-left: 0;
+  }
+  .bv-example-row {
+    padding-left: 0;
+  }
+  .right-login-btn {
+    width: 300px;
   }
 }
 </style>

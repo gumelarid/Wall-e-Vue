@@ -190,9 +190,18 @@ export default {
   margin-bottom: 80px;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 576px) {
   .personal-info .personal-describ {
     width: 100%;
+  }
+  .bv-example-row {
+    padding-left: 0;
+  }
+  .right-login-btn {
+    width: 220px;
+  }
+  .input-wrapper div.vue-pincode-input-wrapper input.vue-pincode-input {
+    max-width: 30px !important;
   }
 }
 </style>
