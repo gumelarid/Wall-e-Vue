@@ -11,12 +11,13 @@
 
 ## About The Project
 
-Wall-e
+Wall-e adalah aplikasi payment gateway untuk melakukan transaksi jarak jauh yang dilengkapi fitur transfer, top up, dan tracking transaction.
 
 ## Built With
 
 [![Vue](https://img.shields.io/badge/Vue-v2.6.11-green)](https://github.com/vuejs/vue)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.5.x-blue)](https://github.com/bootstrap-vue/bootstrap-vue)
+[![Chart.js](https://img.shields.io/badge/Chartjs-v2.0.x-blue)](https://github.com/chartjs)
 
 ## Requirements
 
@@ -41,6 +42,8 @@ VUE_APP_URL = URL BACKEND
 
 - [Axios](https://www.npmjs.com/package/axios)
 - [Vuex](https://vuex.vuejs.org/)
+- [Chartjs](https://www.chartjs.org/)
+- [Vue Pin Code Input](https://github.com/Seokky/vue-pincode-input)
 
 ## Team
 
