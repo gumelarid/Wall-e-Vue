@@ -11,7 +11,7 @@
 
 ## About The Project
 
-Wall-e
+Wall-e adalah aplikasi payment gateway untuk melakukan transaksi jarak jauh yang dilengkapi fitur transfer, top up, dan tracking transaction.
 
 ## Built With
 
