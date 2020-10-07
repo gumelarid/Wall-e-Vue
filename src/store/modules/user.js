@@ -81,6 +81,20 @@ export default {
           })
       })
     },
+    deleteImage(context, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(
+            `${process.env.VUE_APP_URL}/users/delete/image/${payload.user_id}`
+          )
+          .then(response => {
+            resolve(response.data)
+          })
+          .catch(error => {
+            reject(error.response)
+          })
+      })
+    },
     patchDataUser(context, payload) {
       return new Promise((resolve, reject) => {
         axios
@@ -127,7 +141,9 @@ export default {
     getAllUsers(context, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`${process.env.VUE_APP_URL}/users/user/name?search=${context.state.searchName}&page=${context.state.userPage}&limit=${context.state.userLimit}`)
+          .get(
+            `${process.env.VUE_APP_URL}/users/user/name?search=${context.state.searchName}&page=${context.state.userPage}&limit=${context.state.userLimit}`
+          )
           .then(response => {
             context.commit('setUserList', response.data.data)
             context.commit('setUserTotal', response.data.pagination.totalData)

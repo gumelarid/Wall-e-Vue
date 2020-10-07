@@ -12,13 +12,22 @@
           @change="editProfile"
           style="display: none"
         />
-        <div
-          class="edit-picture"
-          @click="$refs.file.click()"
-          style="cursor: pointer"
-        >
-          <b-icon icon="pencil"></b-icon>
-          <span>Edit</span>
+        <div>
+          <div
+            class="edit-picture"
+            @click="$refs.file.click()"
+            style="cursor: pointer"
+          >
+            <b-icon icon="pencil"></b-icon>
+            <span>Edit</span>
+          </div>
+          <div
+            class="edit-picture"
+            @click="resetImage()"
+            style="cursor: pointer; margin-top: 0"
+          >
+            <span class="edit-image-btn">Reset Image</span>
+          </div>
         </div>
         <div class="profile-info">
           <p class="name">
@@ -95,7 +104,7 @@ export default {
   },
   created() {},
   methods: {
-    ...mapActions(['getUserById', 'patchProfile', 'logout']),
+    ...mapActions(['getUserById', 'patchProfile', 'deleteImage', 'logout']),
     editProfile(event) {
       this.formProfile.user_picture = event.target.files[0]
       const data = new FormData()
@@ -109,6 +118,16 @@ export default {
           this.getUserById(this.user.user_id)
           this.makeToast('success', 'Success', response.msg)
           this.formProfile = {}
+        })
+        .catch((error) => {
+          this.makeToast('danger', 'Error', error.data.msg)
+        })
+    },
+    resetImage() {
+      this.deleteImage(this.user)
+        .then((response) => {
+          this.getUserById(this.user.user_id)
+          this.makeToast('success', 'Success', response.msg)
         })
         .catch((error) => {
           this.makeToast('danger', 'Error', error.data.msg)
@@ -169,6 +188,18 @@ export default {
 </script>
 
 <style scoped>
+.edit-image-btn {
+  font-size: 13px;
+  background: #e5e8ed;
+  color: black;
+  padding: 5px;
+  border-radius: 50px;
+}
+.edit-image-btn:hover {
+  background-color: #6379f4;
+  color: white;
+}
+
 .walle-history {
   background: #fff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
