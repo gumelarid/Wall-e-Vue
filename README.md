@@ -13,7 +13,7 @@
 
 ## About The Project
 
-Wall-e adalah aplikasi payment gateway untuk melakukan transaksi jarak jauh yang dilengkapi fitur transfer, top up, dan tracking transaction.
+Wall-e is a web application used in online transactions and also as a storage medium for electronic money. Built using Vue JS and supported by interactive UI and UX, this application is suitable for everyday use. What are you waiting for? let's try!
 
 ## Built With
 
@@ -57,3 +57,7 @@ VUE_APP_URL = URL BACKEND
 |                                       <a href="https://github.com/NHidayat" target="_blank">`https://github.com/NHidayat`</a>                                        |                                    <a href="https://github.com/galuhprahadi96" target="_blank">`https://github.com/galuhprahadi96`</a>                                    |                                       <a href="https://github.com/dheaaqn" target="_blank">`https://github.com/dheaaqn`</a>                                        |                           <a href="https://github.com/muzmiulya" target="_blank">`https://github.com/muzmiulya`</a>                           |                                    <a href="https://github.com/arizalinside" target="_blank">`https://github.com/arizalinside`</a>                                     |
 
 ---
+
+## License
+
+© Wall-e Team
