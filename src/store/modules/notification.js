@@ -32,7 +32,6 @@ export default {
           .get(`${process.env.VUE_APP_URL}/notification/count-unread/${payload}`)
           .then(res => {
             context.commit('setNotifCount', res.data.data[0].total)
-            console.log(res.data.data[0].total)
             resolve(res.data)
           }).catch(error => {
             reject(error.response)
