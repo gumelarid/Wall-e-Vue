@@ -74,7 +74,6 @@ export default {
         axios
           .get(`${process.env.VUE_APP_URL}/transfer/${payload.user_id}?page=${payload.page}&limit=${payload.limit}`)
           .then(res => {
-            console.log(res.data.data)
             context.commit('setTransactionList', res.data.data)
             resolve(res.data)
           }).catch(error => {
@@ -87,12 +86,10 @@ export default {
         axios
           .get(`${process.env.VUE_APP_URL}/transfer/${payload.user_id}?page=${context.state.historyPage}&limit=${context.state.historyLimit}`)
           .then(res => {
-            console.log(res.data.data)
             context.commit('setTransactionList', res.data.data)
             context.commit('setHistoryTotal', res.data.pagination.totalData)
             resolve(res.data)
           }).catch(error => {
-            console.log(error.response)
             reject(error.response)
           })
       })
