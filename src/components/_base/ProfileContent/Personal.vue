@@ -9,15 +9,9 @@
       make changes on your information, contact our support.
     </div>
     <div class="info">
-      <p class="label">First Name</p>
+      <p class="label">Name</p>
       <p class="info-detail">
-        <strong>{{ user.user_first_name }}</strong>
-      </p>
-    </div>
-    <div class="info">
-      <p class="label">Last Name</p>
-      <p class="info-detail">
-        <strong>{{ user.user_last_name }}</strong>
+        <strong>{{ user.user_name }}</strong>
       </p>
     </div>
     <div class="info">
@@ -40,25 +34,14 @@
           <b-alert style="font-size: 13px" variant="warning" :show="isAlert">{{
             isMsg
           }}</b-alert>
-          <label>First Name</label>
+          <label>Name</label>
           <b-input
             style="border: none; border-bottom: 1px solid black"
             type="text"
             id="inline-form-input-name"
             class="mb-2 mr-sm-2 mb-sm-0"
-            placeholder="First Name"
-            v-model="form.user_first_name"
-            required
-          ></b-input>
-          <br />
-          <label>Last Name</label>
-          <b-input
-            style="border: none; border-bottom: 1px solid black"
-            type="text"
-            id="inline-form-input-name"
-            class="mb-2 mr-sm-2 mb-sm-0"
-            placeholder="Last Name"
-            v-model="form.user_last_name"
+            placeholder="Name"
+            v-model="form.user_name"
             required
           ></b-input>
           <br />
@@ -110,8 +93,7 @@ export default {
     ...mapActions(['patchDataUser', 'getUserById']),
     editUser() {
       this.form = {
-        user_first_name: this.user.user_first_name,
-        user_last_name: this.user.user_last_name,
+        user_name: this.user.user_name,
         user_phone: this.user.user_phone
       }
       this.$bvModal.show('edit-profile')
@@ -123,7 +105,7 @@ export default {
         form: this.form
       }
       this.patchDataUser(data)
-        .then((response) => {
+        .then(response => {
           this.getUserById(this.user.user_id)
           this.isAlert = false
           this.isMsg = ''
@@ -131,7 +113,7 @@ export default {
           this.makeToast('success', 'Success', response.msg)
           this.$bvModal.hide('edit-profile')
         })
-        .catch((error) => {
+        .catch(error => {
           this.spinner = false
           this.isAlert = true
           this.isMsg = error.data.msg

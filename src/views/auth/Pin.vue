@@ -119,16 +119,15 @@ export default {
     onSubmit() {
       this.spinner = true
       const payload = {
-        user_id: this.user.user_id,
         user_pin: this.code
       }
       this.patchPin(payload)
-        .then((response) => {
+        .then(response => {
           this.isAlert = false
           this.onSuccess = true
           this.spinner = false
         })
-        .catch((err) => {
+        .catch(err => {
           this.isAlert = true
           this.onSuccess = false
           this.isMsg = err.data.msg

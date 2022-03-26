@@ -12,29 +12,53 @@
             <b-col md="6" class="nav-profile">
               <div class="profile-wrapper">
                 <div class="profile-image" @click="pushToProfile">
-                  <img :src="`${url}/${userData.user_picture}`" alt="">
+                  <img :src="`${url}/${userData.user_picture}`" alt="" />
                 </div>
                 <div class="profile-info" @click="pushToProfile">
                   <div class="profile-name">
-                    <span>{{userData.user_first_name}} {{userData.user_last_name}}</span>
+                    <span>{{ userData.user_name }}</span>
                   </div>
                   <div class="profile-phone">
-                    <span>{{userData.user_phone}}</span>
+                    <span>{{ userData.user_phone }}</span>
                   </div>
                 </div>
                 <div class="notification">
                   <div class="notif-icon">
                     <div>
-                      <b-dropdown variant="link" right toggle-class="text-decoration-none" no-caret>
+                      <b-dropdown
+                        variant="link"
+                        right
+                        toggle-class="text-decoration-none"
+                        no-caret
+                      >
                         <template v-slot:button-content>
                           <b-icon icon="bell" @click="showNotif"></b-icon>
-                          <span class="notif-count" @click="showNotif" v-if="notifCount > 0">{{ notifCount }}</span>
+                          <span
+                            class="notif-count"
+                            @click="showNotif"
+                            v-if="notifCount > 0"
+                            >{{ notifCount }}</span
+                          >
                         </template>
-                        <b-dropdown-item href="#" v-for="(v, i) in userNotif" :key="i">
+                        <b-dropdown-item
+                          href="#"
+                          v-for="(v, i) in userNotif"
+                          :key="i"
+                        >
                           <b-icon icon="arrow-down"></b-icon>
                           <div class="notif-detail">
-                            <span class="notif-subject">{{ v.notif_subject }}</span><br />
-                          <span class="notif-pricing">Rp {{ v.transfer_amount ? formatN(v.transfer_amount) : v.transfer_amount }}</span>
+                            <span class="notif-subject">{{
+                              v.notif_subject
+                            }}</span
+                            ><br />
+                            <span class="notif-pricing"
+                              >Rp
+                              {{
+                                v.transfer_amount
+                                  ? formatN(v.transfer_amount)
+                                  : v.transfer_amount
+                              }}</span
+                            >
                           </div>
                         </b-dropdown-item>
                         <div align="center">

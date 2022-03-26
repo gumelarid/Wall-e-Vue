@@ -2,7 +2,14 @@
   <div class="walle-transfer">
     <b-row class="heading">
       <b-col md="12">
-        <b-alert show variant="success" v-if="isSuccess" dismissible @dismissed="closeAlert">{{ this.resMsg }}</b-alert>
+        <b-alert
+          show
+          variant="success"
+          v-if="isSuccess"
+          dismissible
+          @dismissed="closeAlert"
+          >{{ this.resMsg }}</b-alert
+        >
         <p>Top Up</p>
       </b-col>
       <b-col md="6">
@@ -15,22 +22,42 @@
     </b-row>
     <b-row class="content text-center" align-h="center">
       <b-col md="12" align-self="center">
-        <b-form-input placeholder="0.00" v-model="nominal" style="border: transparent"></b-form-input>
+        <b-form-input
+          placeholder="0.00"
+          v-model="nominal"
+          style="border: transparent"
+        ></b-form-input>
       </b-col>
       <b-col md="4" offset="8" class="text-right mt-3">
         <b-button @click="showModal">Continue</b-button>
-        <b-modal id="enter-pin" centered hide-footer hide-header content-class="enter-pin">
+        <b-modal
+          id="enter-pin"
+          centered
+          hide-footer
+          hide-header
+          content-class="enter-pin"
+        >
           <b-row>
             <b-col md="10" align-self="center" style="margin: 0">
               <h1>Enter PIN to Transfer</h1>
             </b-col>
             <b-col md="2">
-              <b-button style="background-color: transparent; border: transparent" @click="closeModal">
+              <b-button
+                style="background-color: transparent; border: transparent"
+                @click="closeModal"
+              >
                 <b-icon icon="x" variant="dark" />
               </b-button>
             </b-col>
             <b-col md="12">
-              <b-alert show variant="danger" v-if="isError" dismissible @dismissed="closeAlert">{{ this.resMsg }}</b-alert>
+              <b-alert
+                show
+                variant="danger"
+                v-if="isError"
+                dismissible
+                @dismissed="closeAlert"
+                >{{ this.resMsg }}</b-alert
+              >
             </b-col>
             <b-col md="10">
               <p>
@@ -41,12 +68,23 @@
             <b-col md="12" class="text-center">
               <b-form @submit.prevent="submitTopup">
                 <div class="input-pin">
-                  <PincodeInput v-model="pin" placeholder="_" :autofocus="false" :length="6" required />
+                  <PincodeInput
+                    v-model="pin"
+                    placeholder="_"
+                    :autofocus="false"
+                    :length="6"
+                    required
+                  />
                 </div>
                 <div class="btn-submit float-right mt-3">
                   <b-button type="submit">
                     continue
-                    <b-spinner small variant="light" type="grow" v-if="spinner"></b-spinner>
+                    <b-spinner
+                      small
+                      variant="light"
+                      type="grow"
+                      v-if="spinner"
+                    ></b-spinner>
                   </b-button>
                 </div>
               </b-form>
@@ -105,7 +143,7 @@ export default {
         }
 
         this.paymentTopup(setData)
-          .then((response) => {
+          .then(response => {
             this.$bvModal.hide('enter-pin')
             this.nominal = ''
             this.makeToast('success', 'Hellow Friend', response.msg)
@@ -113,10 +151,10 @@ export default {
               this.$router.push('/dashboard')
             }, 5000)
           })
-          .catch((error) => {
+          .catch(error => {
             this.isError = true
             this.resMsg = error.msg
-            this.$bvModal.hide('enter-pin')
+            // this.$bvModal.hide('enter-pin')
             this.nominal = ''
             this.spinner = false
           })
@@ -134,5 +172,4 @@ export default {
     ...mapGetters({ user: 'getUserData' })
   }
 }
-
 </script>

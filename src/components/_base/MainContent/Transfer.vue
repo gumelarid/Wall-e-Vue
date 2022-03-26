@@ -12,19 +12,27 @@
                 <b-icon icon="search" />
               </b-input-group-text>
             </b-input-group-append>
-            <b-input type="search" placeholder="Search receiver here" v-model="targetName"></b-input>
+            <b-input
+              type="search"
+              placeholder="Search receiver here"
+              v-model="targetName"
+            ></b-input>
           </b-input-group>
         </b-form>
       </b-col>
       <b-col md="12">
         <div class="list-group">
-          <b-list-group-item v-for="(v, i) in userList" :key="i" @click="continueTransfer(v)">
+          <b-list-group-item
+            v-for="(v, i) in userList"
+            :key="i"
+            @click="continueTransfer(v)"
+          >
             <b-row>
               <b-col md="2">
                 <b-img :src="url + v.user_picture" />
               </b-col>
               <b-col md="10" align-self="center">
-                <p class="name">{{ v.user_first_name }} {{ v.user_last_name }}</p>
+                <p class="name">{{ v.user_name }}</p>
                 <p class="phone">{{ v.user_phone }}</p>
               </b-col>
             </b-row>
@@ -32,7 +40,15 @@
         </div>
       </b-col>
       <div class="pagination col-md-12" align="center">
-        <b-pagination centered v-model="page" :total-rows="totalData" :per-page="limit" aria-controls="my-table" align="center" @change="paginationSetup"></b-pagination>
+        <b-pagination
+          centered
+          v-model="page"
+          :total-rows="totalData"
+          :per-page="limit"
+          aria-controls="my-table"
+          align="center"
+          @change="paginationSetup"
+        ></b-pagination>
       </div>
     </b-row>
   </div>
@@ -66,10 +82,9 @@ export default {
     ...mapMutations(['setUserPage', 'setUserTargetId', 'setSearchName']),
     async continueTransfer(e) {
       await this.setUserTargetId(e.user_id)
-      this.$router.push(`/transfer-set?to=${e.user_id}&n=${e.user_first_name}+${e.user_last_name}`)
+      this.$router.push(`/transfer-set?to=${e.user_id}&n=${e.user_name}`)
     },
     paginationSetup(data) {
-      console.log(data)
       this.setUserPage(data)
       this.getAllUsers()
     },
@@ -80,5 +95,4 @@ export default {
     }
   }
 }
-
 </script>

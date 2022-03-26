@@ -36,11 +36,10 @@ export default {
   },
   actions: {
     check(context, payload) {
-      console.log(payload)
       return new Promise((resolve, reject) => {
         axios
           .get(
-            `${process.env.VUE_APP_URL}/users/pin/${payload.user_id}`,
+            `${process.env.VUE_APP_URL}/users/pin`,
             payload.user_pin
           )
           .then(response => {
@@ -55,7 +54,7 @@ export default {
       return new Promise((resolve, reject) => {
         axios
           .patch(
-            `${process.env.VUE_APP_URL}/users/patch/pin/${payload.user_id}`,
+            `${process.env.VUE_APP_URL}/users/patch/pin`,
             payload
           )
           .then(response => {
@@ -70,7 +69,7 @@ export default {
       return new Promise((resolve, reject) => {
         axios
           .patch(
-            `${process.env.VUE_APP_URL}/users/patch/image/${payload.user_id}`,
+            `${process.env.VUE_APP_URL}/users/patch/image`,
             payload.formData
           )
           .then(response => {
@@ -85,7 +84,7 @@ export default {
       return new Promise((resolve, reject) => {
         axios
           .patch(
-            `${process.env.VUE_APP_URL}/users/delete/image/${payload.user_id}`
+            `${process.env.VUE_APP_URL}/users/delete/image`
           )
           .then(response => {
             resolve(response.data)
@@ -99,7 +98,7 @@ export default {
       return new Promise((resolve, reject) => {
         axios
           .patch(
-            `${process.env.VUE_APP_URL}/users/patch/profile/${payload.user_id}`,
+            `${process.env.VUE_APP_URL}/users/patch/profile`,
             payload.form
           )
           .then(response => {
@@ -114,7 +113,7 @@ export default {
       return new Promise((resolve, reject) => {
         axios
           .patch(
-            `${process.env.VUE_APP_URL}/users/patch/password/${payload.user_id}`,
+            `${process.env.VUE_APP_URL}/users/patch/password`,
             payload.form
           )
           .then(response => {

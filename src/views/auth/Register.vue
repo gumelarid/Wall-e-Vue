@@ -143,34 +143,47 @@ export default {
       // console.log(this.form)
       this.spinner = true
       this.register(this.form)
-        .then((response) => {
-          const payload = {
-            user_email: this.form.user_email
+        .then(response => {
+          // const payload = {
+          //   user_email: this.form.user_email
+          // }
+          this.form = {
+            user_email: '',
+            user_first_name: '',
+            user_last_name: '',
+            user_phone: '',
+            user_password: '',
+            confirm_password: ''
           }
-          this.activationEmail(payload)
-            .then((result) => {
-              this.form = {
-                user_email: '',
-                user_first_name: '',
-                user_last_name: '',
-                user_phone: '',
-                user_password: '',
-                confirm_password: ''
-              }
-              this.isSuccess = true
-              this.isAlert = false
-              this.isMsg =
-                'Email has been sent !, please check your email, to activation your account'
-              this.spinner = false
-            })
-            .catch((error) => {
-              this.isSuccess = false
-              this.isAlert = true
-              this.isMsg = error.data.msg
-              this.spinner = false
-            })
+          this.isSuccess = true
+          this.isAlert = false
+          this.isMsg = 'You are success registered'
+          this.spinner = false
+          // this.activationEmail(payload)
+          //   .then(result => {
+          //     this.form = {
+          //       user_email: '',
+          //       user_first_name: '',
+          //       user_last_name: '',
+          //       user_phone: '',
+          //       user_password: '',
+          //       confirm_password: ''
+          //     }
+          //     this.isSuccess = true
+          //     this.isAlert = false
+          //     this.isMsg = 'You are success registered'
+          //     // this.isMsg =
+          //     //   'Email has been sent !, please check your email, to activation your account'
+          //     this.spinner = false
+          //   })
+          //   .catch(error => {
+          //     this.isSuccess = false
+          //     this.isAlert = true
+          //     this.isMsg = error.data.msg
+          //     this.spinner = false
+          //   })
         })
-        .catch((err) => {
+        .catch(err => {
           this.isSuccess = false
           this.isAlert = true
           this.isMsg = err.data.msg

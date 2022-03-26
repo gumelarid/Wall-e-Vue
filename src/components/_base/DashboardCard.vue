@@ -4,26 +4,44 @@
       <div class="walle-card chart-info">
         <b-row class="header walle-card-header">
           <b-col cols="8" class="income" @click="changeTab('income')">
-            <b-icon icon="arrow-down"></b-icon><br>
-            <span class="text-semi">Income</span><br>
-            <span class="chart-amount">Rp {{ weekIncome ? formatN(weekIncome) : weekIncome || 0 }}</span>
+            <b-icon icon="arrow-down"></b-icon><br />
+            <span class="text-semi">Income</span><br />
+            <span class="chart-amount"
+              >Rp {{ weekIncome ? formatN(weekIncome) : weekIncome || 0 }}</span
+            >
           </b-col>
           <b-col cols="4" class="expense" @click="changeTab('expense')">
-            <b-icon icon="arrow-up"></b-icon><br>
-            <span class="text-semi">Expense</span><br>
-            <span class="chart-amount">Rp{{ weekExpense ? formatN(weekExpense) : weekExpense || 0 }}</span>
+            <b-icon icon="arrow-up"></b-icon><br />
+            <span class="text-semi">Expense</span><br />
+            <span class="chart-amount"
+              >Rp{{
+                weekExpense ? formatN(weekExpense) : weekExpense || 0
+              }}</span
+            >
           </b-col>
           <b-col></b-col>
         </b-row>
         <div align="center">
-          <span><strong>{{ chartTitle }}</strong></span>
+          <span
+            ><strong>{{ chartTitle }}</strong></span
+          >
         </div>
         <div class="chart">
           <div class="chart-income" v-if="isDailyIncome">
-            <column-chart :dataset="{borderWidth: 0}" thousands="," prefix="Rp " :data="dailyIncome"></column-chart>
+            <column-chart
+              :dataset="{ borderWidth: 0 }"
+              thousands=","
+              prefix="Rp "
+              :data="dailyIncome"
+            ></column-chart>
           </div>
           <div class="chart-expense" v-else>
-            <column-chart :dataset="{borderWidth: 0}" thousands="," prefix="Rp " :data="dailyExpense"></column-chart>
+            <column-chart
+              :dataset="{ borderWidth: 0 }"
+              thousands=","
+              prefix="Rp "
+              :data="dailyExpense"
+            ></column-chart>
           </div>
         </div>
       </div>
@@ -36,22 +54,47 @@
         </div>
         <div class="walle-card-body">
           <div class="history-collections">
-            <div class="history-item row" v-for="(v, i) in transactionList" :key="i">
+            <div
+              class="history-item row"
+              v-for="(v, i) in transactionList"
+              :key="i"
+            >
               <b-col cols="2" class="history-image">
-                <img :src="url + v.user_picture_b" alt="">
+                <img :src="url + v.user_picture_b" alt="" />
               </b-col>
               <b-col cols="5" class="history-info">
-                <span class="history-name">{{v.user_name_b}}</span><br>
-                <span class="history-status" v-if="v.user_role === '1'">Transfer</span>
+                <span class="history-name">{{ v.user_name_b }}</span
+                ><br />
+                <span class="history-status" v-if="v.user_role === '1'"
+                  >Transfer</span
+                >
                 <span class="history-status" v-else>Transfered</span>
               </b-col>
-              <b-col cols="5" class="history-amount minus"  v-if="v.user_role === '1'">
+              <b-col
+                cols="5"
+                class="history-amount minus"
+                v-if="v.user_role === 1"
+              >
                 <span>- </span>
-                <span>Rp. {{ v.transfer_amount ? formatN(v.transfer_amount) : v.transfer_amount }}</span>
+                <span
+                  >Rp.
+                  {{
+                    v.transfer_amount
+                      ? formatN(v.transfer_amount)
+                      : v.transfer_amount
+                  }}</span
+                >
               </b-col>
-              <b-col cols="5" class="history-amount plus"  v-else>
+              <b-col cols="5" class="history-amount plus" v-else>
                 <span>+ </span>
-                <span>Rp. {{ v.transfer_amount ? formatN(v.transfer_amount) : v.transfer_amount }}</span>
+                <span
+                  >Rp.
+                  {{
+                    v.transfer_amount
+                      ? formatN(v.transfer_amount)
+                      : v.transfer_amount
+                  }}</span
+                >
               </b-col>
             </div>
           </div>
@@ -81,7 +124,14 @@ export default {
     this.getUserTransaction(setData)
   },
   computed: {
-    ...mapGetters({ user: 'getUser', dailyIncome: 'getDailyIncome', dailyExpense: 'getDailyExpense', weekIncome: 'getWeekIncome', weekExpense: 'getweekExpense', transactionList: 'getTransactionList' })
+    ...mapGetters({
+      user: 'getUser',
+      dailyIncome: 'getDailyIncome',
+      dailyExpense: 'getDailyExpense',
+      weekIncome: 'getWeekIncome',
+      weekExpense: 'getweekExpense',
+      transactionList: 'getTransactionList'
+    })
   },
   methods: {
     ...mapActions(['getStatistic', 'getUserTransaction']),
@@ -99,6 +149,5 @@ export default {
     }
   }
 }
-
 </script>
 <style src="../../assets/style/dashboard.css" scoped></style>

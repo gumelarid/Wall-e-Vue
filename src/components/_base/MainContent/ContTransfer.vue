@@ -12,8 +12,8 @@
                 <b-img :src="url + userTarget.user_picture" />
               </b-col>
               <b-col md="10" align-self="center">
-                <p class="name">{{userTarget.user_first_name}} {{userTarget.user_last_name}}</p>
-                <p class="phone">{{userTarget.user_phone}}</p>
+                <p class="name">{{ userTarget.user_name }}</p>
+                <p class="phone">{{ userTarget.user_phone }}</p>
               </b-col>
             </b-row>
           </b-list-group-item>
@@ -26,17 +26,40 @@
         </p>
       </b-col>
     </b-row>
-    <b-row class="content text-center" align-h="center" v-if="user.user_id !== userTarget.user_id">
+    <b-row
+      class="content text-center"
+      align-h="center"
+      v-if="user.user_id !== userTarget.user_id"
+    >
       <b-col md="12" align-self="center">
-        <b-form-input placeholder="0.00" autofocus type="number" min="1" v-model="transfer_amount"></b-form-input>
+        <b-form-input
+          placeholder="0.00"
+          autofocus
+          type="number"
+          min="1"
+          v-model="transfer_amount"
+        ></b-form-input>
       </b-col>
-      <b-col md="12" class="mt-3"><p>Rp. {{ userData.user_balance ? formatN(userData.user_balance) : userData.user_balance }} Available</p></b-col>
+      <b-col md="12" class="mt-3"
+        ><p>
+          Rp.
+          {{
+            userData.user_balance
+              ? formatN(userData.user_balance)
+              : userData.user_balance
+          }}
+          Available
+        </p></b-col
+      >
       <b-col md="7">
         <b-input-group>
           <template v-slot:prepend>
-            <b-input-group-text><b-icon icon="pencil" /></b-input-group-text >
+            <b-input-group-text><b-icon icon="pencil"/></b-input-group-text>
           </template>
-          <b-form-input placeholder="Add some notes" v-model="transfer_note"></b-form-input>
+          <b-form-input
+            placeholder="Add some notes"
+            v-model="transfer_note"
+          ></b-form-input>
         </b-input-group>
       </b-col>
       <b-col md="4" offset="8" class="text-right mt-5">
@@ -85,10 +108,21 @@ export default {
         user_pin: '',
         user_b_picture: this.userTarget.user_picture,
         user_b_phone: this.userTarget.user_phone,
-        user_b_name: this.userTarget.user_first_name + ' ' + this.userTarget.user_last_name
+        user_b_name: this.userTarget.user_name
       }
-      await this.setTransferData(setData)
-      this.$router.push('/transfer-confirmation')
+      if (this.transfer_amount > this.userData.user_balance) {
+        this.makeToast('danger', 'Error', 'insufition balance!')
+      } else {
+        await this.setTransferData(setData)
+        this.$router.push('/transfer-confirmation')
+      }
+    },
+    makeToast(variant, title, msg) {
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true
+      })
     }
   }
 }

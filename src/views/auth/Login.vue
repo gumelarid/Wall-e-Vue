@@ -99,7 +99,7 @@ export default {
     onSubmit() {
       this.spinner = true
       this.login(this.form)
-        .then((response) => {
+        .then(response => {
           this.makeToast('success', 'Success', response.msg)
           this.form = {
             user_email: '',
@@ -117,7 +117,7 @@ export default {
             }, 2000)
           }
         })
-        .catch((err) => {
+        .catch(err => {
           this.spinner = false
           this.isAlert = true
           this.isMsg = err.data.msg
