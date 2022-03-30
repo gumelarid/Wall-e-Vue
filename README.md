@@ -1,10 +1,10 @@
 <h1 align='center'>Vue JS - Wall-e</h1>
   <p align="center">
-    <a href="https://wal-e.netlify.app/">View Demo</a>
+    <a href="https://wall-e-vue.vercel.app/">View Demo</a>
     ·
-    <a href="https://github.com/NHidayat/Wall-e-Vue/issues">Report Bug</a>
+    <a href="https://github.com/gumelarid/Wall-e-Vue/issues">Report Bug</a>
     ·
-    <a href="https://github.com/NHidayat/Wall-e-Vue/issues">Request Feature</a>
+    <a href="https://github.com/gumelarid/Wall-e-Vue/issues">Request Feature</a>
   </p>
 
 <p align="center">
@@ -25,11 +25,11 @@ Wall-e is a web application used in online transactions and also as a storage me
 
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
 2. Node_modules `npm install` or `yarn install`
-3. Backend API Walle [`here`](https://github.com/NHidayat/Wall-e-Express)
+3. Backend API Walle [`here`](https://github.com/gumelarid/BE-WallE)
 
 ## Getting Started
 
-1. Download this Project or you can type `git clone https://github.com/NHidayat/Wall-e-Vue.git`
+1. Download this Project or you can type `git clone https://github.com/gumelarid/Wall-e-Vue.git`
 2. Open app's directory in CMD or Terminal
 3. Type `npm install` or `yarn install`
 4. Add .env file at root folder project
